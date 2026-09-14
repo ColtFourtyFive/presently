@@ -6,6 +6,8 @@ import { createStudentRecord, createInquiryRecord, audit } from './records.js';
 import type { Subject } from '../shared/types.js';
 
 export interface InitializeOptions { seed?: boolean; adminEmail?: string; adminPassword?: string }
+export const DEMO_CENTER_LOCATION = 'Your learning center';
+export const DEMO_OPERATING_HOURS = 'Monday–Thursday, 2:00–7:00 PM';
 export async function initializeDatabase(db: Database, options: InitializeOptions = {}): Promise<void> {
   for (const statement of schemaStatements) await db.query(statement);
   const existing = await db.query('SELECT id FROM centers LIMIT 1');
@@ -14,12 +16,13 @@ export async function initializeDatabase(db: Database, options: InitializeOption
   const password = options.adminPassword ?? process.env.ADMIN_PASSWORD ?? '';
   if (!email || password.length < 12) throw new Error('Set ADMIN_EMAIL and ADMIN_PASSWORD (at least 12 characters) before the first start.');
   const passwordHash = await hashPassword(password);
-  const seed = options.seed ?? process.env.SEED_DEMO !== 'false';
+  const seed = options.seed ?? process.env.SEED_DEMO === 'true';
   await db.transaction(async tx => {
     const centerId = 'main-center';
     await tx.query('INSERT INTO centers(id,name,timezone,location,operating_hours,demo) VALUES($1,$2,$3,$4,$5,$6)',
       [centerId, process.env.CENTER_NAME || 'Kumon Learning Center', process.env.CENTER_TIMEZONE || 'America/Los_Angeles',
-       'Your learning center', 'Monday–Thursday, 2:00–7:00 PM', seed]);
+       process.env.CENTER_LOCATION?.trim() ?? (seed ? DEMO_CENTER_LOCATION : ''),
+       process.env.CENTER_OPERATING_HOURS?.trim() ?? (seed ? DEMO_OPERATING_HOURS : ''), seed]);
     const actor: Actor = { id: randomUUID(), centerId, name: process.env.ADMIN_NAME || (seed ? 'Emma Wilson' : 'Center Owner'), email, role: 'owner' };
     await tx.query('INSERT INTO staff(id,center_id,name,email,role,password_hash) VALUES($1,$2,$3,$4,$5,$6)',
       [actor.id, centerId, actor.name, email, actor.role, passwordHash]);

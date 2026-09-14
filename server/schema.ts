@@ -2,8 +2,9 @@ export const schemaStatements = [
 `CREATE TABLE IF NOT EXISTS centers (
  id TEXT PRIMARY KEY, name TEXT NOT NULL, timezone TEXT NOT NULL,
  location TEXT NOT NULL DEFAULT '', operating_hours TEXT NOT NULL DEFAULT '',
- demo BOOLEAN NOT NULL DEFAULT TRUE, student_sequence INTEGER NOT NULL DEFAULT 0
+ demo BOOLEAN NOT NULL DEFAULT FALSE, student_sequence INTEGER NOT NULL DEFAULT 0
 )`,
+`ALTER TABLE centers ALTER COLUMN demo SET DEFAULT FALSE`,
 `CREATE TABLE IF NOT EXISTS staff (
  id TEXT PRIMARY KEY, center_id TEXT NOT NULL REFERENCES centers(id), name TEXT NOT NULL,
  email TEXT NOT NULL UNIQUE, role TEXT NOT NULL CHECK (role IN ('owner','manager','front_desk','instructor')),
