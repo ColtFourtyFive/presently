@@ -42,7 +42,7 @@ export default function SchedulePage({ data, refresh, notify, onStudent }: PageP
   const totalMinutes = (maximumHour - minimumHour) * 60;
   const gridHeight = Math.max(560, (maximumHour - minimumHour) * 74);
   const hours = Array.from({ length: maximumHour - minimumHour + 1 }, (_, index) => minimumHour + index);
-  const weekLabel = `${week[0].toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' })} to ${week[6].toLocaleDateString('en-US', { month: week[0].getUTCMonth() === week[6].getUTCMonth() ? undefined : 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}`;
+  const weekLabel = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).formatRange(week[0], week[6]);
   const studentFor = (slot: Schedule) => data.students.find(student => student.id === slot.studentId);
   const save = async (event: FormEvent) => {
     event.preventDefault(); setSaving(true);
