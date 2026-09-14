@@ -1,0 +1,455 @@
+URL: https://jumbula.com/jb-business-app/
+
+Jumbula Business App - Jumbula
+Skip to content
+Sign In
+Close Sign In
+Open Sign In
+Admin / Staff
+Participants
+Contact the organization
+you enrolled with
+Learning Series
+Solutions
+Close Solutions
+Open Solutions
+Services
+Enterprise
+Features
+Partnerships
+Mobile Apps
+Online Registration
+Streamline enrollment with customizable registration forms.
+Learn more
+Online Payments
+Accept secure payments and manage billing easily.
+Learn more
+Business Marketing
+Grow your audience with email and SMS.
+Learn more
+Web Design & SEO
+Build professional websites that attract more clients.
+Learn more
+Enterprise Solutions
+Scalable tools for large organizations and teams.
+Learn more
+Franchise Solutions
+Manage multiple franchise locations from one platform.
+Learn more
+Multi-location Orgs
+Coordinate operations seamlessly across all your locations.
+Learn more
+200+ Features
+Explore scheduling, billing, and reporting features.
+Learn more
+Marketplace
+List your programs and reach 1.4M families.
+Learn more
+Integration Apps
+Connect with QuickBooks, Mailchimp, Zoom, and more.
+Learn more
+PayPal
+Accept PayPal, Venmo, cards, and Pay Later options.
+Learn more
+Stripe
+Process cards, Apple Pay, Google Pay, and more.
+Learn more
+Jumbula Business App
+Manage programs on-the-go with real-time access.
+Learn more
+My Jumbula App
+Families register, pay, and stay connected easily.
+Learn more
+Pay As You Go
+Ideal for providers with variable usage
+Only pay for the enrollments you use
+First Month Free
+Get Started!
+Markets
+Close Markets
+Open Markets
+Activity Type
+Camp Formats
+Schools
+Sports
+Performing Arts
+Educational Centers
+Community Centers
+Class
+Software for managing class registrations and schedules.
+Camp
+Streamline camp enrollment, payments, & attendance tracking.
+Afterschool
+Simplify afterschool program registration & family engagement.
+Childcare
+Manage childcare enrollment, billing, & parent communication.
+Scheduling
+Organize classes, staff, and resources with ease.
+Summer Camps
+Multi-week camp programs during school breaks.
+Day Camps
+Camp programs with daily schedules & drop-in options.
+General
+Afterschool program registration & family communication.
+School Districts
+Centralized management for programs across multiple schools.
+PTAs & PTOs
+Registration and payments for parent-led programs.
+General
+Sports programs with flexible sessions and memberships.
+Chess
+Classes and tournament-based chess programs.
+Swimming
+Private and group swim sessions with flexible enrollment.
+General
+Private and group performing arts programs.
+Music
+Music lessons with instrument borrowing options.
+Dance
+Recurring dance classes with flexible enrollment options.
+STEM Programs
+STEM classes and camps with inventory support.
+YMCA
+Centralized program registration for YMCA programs.
+Language Centers
+Multi-level classes and private lessons.
+Special Needs Programs
+Adaptive enrollment with emergency contact support.
+Parks & Recreation
+Community programs with sessions and memberships
+Nonprofits
+Free and discounted programs with flexible registration.
+Faith Organizations
+Registration with built-in donations and fund tracking.
+Providers
+Centralized management for activity providers.
+Resources
+Close Resources
+Open Resources
+Company
+About Us
+Careers
+Privacy Policy
+Terms of Services
+Libraries
+Blog
+Success Stories
+Jumbula in the News
+Knowledge Hub
+Guides
+Webinars
+Help Center
+Incentive Programs
+Referral Programs
+Pricing
+Contact Us
+Book a Demo
+Jumbula Business App
+Run Your Programs From Anywhere
+Give your staff a powerful mobile app to see today’s programs at a glance, take attendance in seconds, and keep dismissals secure. The Jumbula Business App syncs with your main account, putting schedules, reports, and role-based tools in one place for teams on the go.
+Google play
+App Store
+Home
+Your Day at a Glance
+Start every shift with a clear list of today’s sessions and what needs your attention. The Home screen brings upcoming and ongoing programs into one place so staff can tap directly into attendance and dismissal, quickly switch between schools or locations, and search for specific programs in seconds, keeping every site running smoothly.
+Attendance
+Dismissal
+Check In/Out
+Clock In/Out
+Attendance – Fast, Accurate Tracking for Every Session
+Quickly record who’s present, late, absent, or excused from any device, so your records stay up to date in real time.
+Key points:
+Mark Present, Late, Absent, or Excused with a tap
+View attendance by program, session, group, or date
+Add notes for exceptions, incidents, or follow-up
+Use visual indicators to scan the list and spot who’s missing
+Dismissal – Safer, smoother pickup
+Make end-of-day pickup calm and secure. Staff can quickly see who’s authorized to pick up each participant, record how they left, and reach families in seconds if plans change.
+Key points:
+See authorized pickup options for each participant at a glance
+Support parent/guardian, bus, authorized adult, or self check-out
+Log dismissal time and method in real time for accountability
+Access phone numbers instantly for emergencies or last-minute updates
+CICO – Fast Check-In/Check-Out for Daily Sessions
+Streamline daily check-in and check-out while keeping a clear record of who arrived, who left, and who handled pickup – all from one simple view.
+Key points:
+See who’s checked in, checked out, or pending at a glance
+Track time-in/time-out per participant for compliance and billing
+Record who handled drop-off or pickup (parent, caregiver, bus, etc.)
+Connect CICO with attendance and dismissal to see the full daily flow
+Clock In/Out – Transparent Time Tracking
+Easily track instructor and staff work times with clock-in/out from the app, GPS verification where enabled, and clean records that flow straight into your admin reports.
+Key points:
+Instructors clock in and out directly from the app
+Optional GPS verification for added accountability
+On-site coordinators can submit times on behalf of staff
+Time data is logged in the admin dashboard for payroll and compliance
+Calendar
+Your Schedule, Always in Your Pocket
+Stay on top of busy schedules with daily, weekly, and monthly views that show what’s happening across programs and locations. The Calendar tab offers a focused Day view, a quick-glance Week view, and a forward-looking Month view. Color-coded program types and easy navigation make it simple for staff to find what they need fast.
+Google play
+App Store
+Your All-in-one App to Grow Your Business
+Participant Profiles & Forms
+Give staff one clear, reliable view of every participant – contact details, medical info, groups, waivers, and more, so they can quickly access the details they need without leaving the app.
+Participant Profiles & Forms display group assignments and allow authorized staff to open full registration forms for deeper review.
+Clear signed/accepted indicators make waiver checks fast and dependable.
+Built-in keyword search (e.g., “allergy”) lets teams jump directly to critical information in seconds.
+Real-Time Insights
+Your staff does not need to be at a desk to get the information they need. The Jumbula Business App delivers key reports to any device, enabling on-the-spot decision-making.
+Roster report with essential participant details, including allergies and medical notes
+Absentee report to track who missed sessions and follow up if needed
+Providers report to see which staff are assigned to each program
+Search
+Use universal search to find participants or programs in seconds and open their details right when you need them.
+Universal search across participants and programs
+Jump straight from search results into profiles or program views
+Quickly access critical participant details when time is tight
+Scan Codes & Kiosk Mode
+Fast check‑in with scan codes and kiosk mode.
+Fast, modern check-in with scan codes and kiosk mode. Turn any device into a self-service station so families can sign in and out on their own – without creating bottlenecks.
+Key points:
+Scan or enter a PIN code to check participants in or out
+Use kiosk mode at the front desk so parents can sign in and out on their own
+Reduce bottlenecks at busy arrival and dismissal times
+Email & Groups
+Organize and communicate with the right groups
+Stay organized with participant groups and send professional communications when needed, all within the Jumbula ecosystem.
+Key points:
+Use groups to organize participants (for example: classes, teams, or bus groups)
+See a participant’s assigned groups directly from their profile
+Send email communications through your existing Jumbula tools when you need to follow up with specific groups or families
+Customization & Role-Based Access
+Built for your roles and workflows
+Shape the app around how your organization really works. Admins control who sees what, while staff personalize views to match their day-to-day tasks.
+Key points:
+Staff can set their preferred time zone view
+Restrict or grant access to registration forms and waivers as needed
+Admins configure which roles can access specific tools and sensitive data
+Adjust how participant lists are sorted to match your workflows
+Get Started with Jumbula Business App Today
+Everything you need, all in one app.
+Google play
+App Store
+Solutions
+Online Registration
+Online Payment
+Web Design & SEO
+Enterprise Solutions
+Business Marketing
+Scheduling Software
+Marketplace
+Industry
+Class
+Camp
+Summer Camp
+Day Camp
+Childcare
+Afterschool
+Nonprofits
+School
+School District
+Parks and Recreation
+Church
+Providers
+Vertical
+STEM
+Sports
+Chess
+Swim
+Performing Arts
+Dance
+Music
+Language Centers
+Resources
+Blog
+Pricing
+Features
+About us
+Contact us
+Help and Support
+Integration Apps
+Referral Programs
+Jumbula in the News
+Privacy Policy
+Terms of Service
+Service Agreements
+Jumbula API Documentation
+[email protected]
+(650) 502-0350
+1900 S. Norfolk Street, Suite 350, San Mateo, CA 94403
+Linkedin
+Facebook
+Instagram
+Youtube
+© 2026 Jumbula. All rights reserved.
+Linkedin
+Facebook
+Instagram
+Youtube
+Scroll to Top
+Solutions
+Markets
+Resources
+Pricing
+Contact Us
+Learning Series
+Book a Demo
+Admin / Staff
+Participants
+Contact the organization you enrolled with
+Marketing Strategies to Boost Program Enrollment
+Name
+*
+Email Name
+Email
+*
+Download Now!
+Fix Your Biggest Summer Camp Enrollment Challenges!
+Get Your Free eBook Today!
+Solutions
+Services
+Online Registration
+Online Payments
+Business Marketing
+Web Design & SEO
+Enterprise
+Enterprise Solutions
+Franchise Solutions
+Multi-location Organizations
+Features
+Integration Apps
+Marketplace
+200+ Features
+Partnerships
+PayPal
+Stripe
+Mobile Apps
+Jumbula Business App
+My Jumbula App (Family App)
+Book a Demo
+Markets
+Activity Type
+Class
+Camp
+Childcare
+Afterschool
+Scheduling
+Camp Categories
+Summer Camp
+Day Camp
+School
+General
+School District
+PTA & PTO
+Educational Centers
+YMCA
+STEM Programs
+Language Centers
+Special Needs Programs
+Performing Arts
+General
+Music
+Dance
+Sports
+General
+Chess
+Swim
+Community Services
+Nonprofits
+Faith Organizations
+Parks & Recreation
+Providers
+Book a Demo
+Resources
+Company
+About Us
+Privacy Policy
+Terms of Service
+Careers
+Libraries
+Jumbula in the News
+Success Stories
+Help Center
+Blog
+Knowledge
+Guides
+Webinars
+Incentive Programs
+Referral Program
+Book a Demo
+
+LINKS
+#content
+#elementor-action%3Aaction%3Dpopup%3Aclose%26settings%3DeyJkb19ub3Rfc2hvd19hZ2FpbiI6IiJ9
+#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjE0NzE5IiwidG9nZ2xlIjpmYWxzZX0%3D
+#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjIwNzk1IiwidG9nZ2xlIjpmYWxzZX0%3D
+#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjIwNzkyIiwidG9nZ2xlIjpmYWxzZX0%3D
+#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjIwODE4IiwidG9nZ2xlIjpmYWxzZX0%3D
+#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjIwODExIiwidG9nZ2xlIjpmYWxzZX0%3D
+/cdn-cgi/l/email-protection
+https://app.theneo.io/hassan-jumbula-com/jumbula2/getting-started/introduction
+https://apps.apple.com/us/app/jumbula-for-business/id6444305317
+https://blog.jumbula.com/
+https://cdn1.jumbula.com/website/service-level-agreement.pdf
+https://jumbula.com/
+https://jumbula.com/about-us/
+https://jumbula.com/book-a-demo/
+https://jumbula.com/business-marketing/
+https://jumbula.com/careers/
+https://jumbula.com/class-scheduling-software/
+https://jumbula.com/contact-us/
+https://jumbula.com/enterprise-solutions/
+https://jumbula.com/features/
+https://jumbula.com/franchise-solutions/
+https://jumbula.com/guide/
+https://jumbula.com/integration-apps/
+https://jumbula.com/jb-business-app/
+https://jumbula.com/marketplace/
+https://jumbula.com/markets/afterschool-registration-software/
+https://jumbula.com/markets/camp-registration-software/
+https://jumbula.com/markets/chess-registration-software/
+https://jumbula.com/markets/childcare-registration-software/
+https://jumbula.com/markets/church-registration-software/
+https://jumbula.com/markets/class-registration-software/
+https://jumbula.com/markets/dance-class-management-software/
+https://jumbula.com/markets/day-camp-registration-software/
+https://jumbula.com/markets/music-school-software/
+https://jumbula.com/markets/parks-and-recreation-registration-software/
+https://jumbula.com/markets/performing-arts-management-software/
+https://jumbula.com/markets/provider-solutions/
+https://jumbula.com/markets/pta-software-solutions/
+https://jumbula.com/markets/registration-software-for-language-centers/
+https://jumbula.com/markets/registration-software-for-stem-centers/
+https://jumbula.com/markets/school-district-management-software/
+https://jumbula.com/markets/school-management-software/
+https://jumbula.com/markets/software-for-nonprofit-organizations/
+https://jumbula.com/markets/special-needs-program-registration-software/
+https://jumbula.com/markets/sports-management-software/
+https://jumbula.com/markets/summer-camp-registration-software/
+https://jumbula.com/markets/swim-school-management-software/
+https://jumbula.com/markets/ymca-management-software/
+https://jumbula.com/my-jumbula-app/
+https://jumbula.com/online-payment-software/
+https://jumbula.com/online-registration-software/
+https://jumbula.com/pay-as-you-go/
+https://jumbula.com/paypal/
+https://jumbula.com/presswire/
+https://jumbula.com/pricing/
+https://jumbula.com/privacy-policy/
+https://jumbula.com/referral-program/
+https://jumbula.com/registration-software-for-multilocation-businesses/
+https://jumbula.com/stripe/
+https://jumbula.com/success-stories/
+https://jumbula.com/terms-of-service/
+https://jumbula.com/web-design-and-seo/
+https://jumbula.com/webinar/
+https://kb.jumbula.com/portal/en/kb
+https://login.jumbula.com/
+https://play.google.com/store/apps/details?id=com.jumbula_management.app&gl=US&pli=1
+https://twitter.com/Jumbulame
+https://www.facebook.com/jumbulame
+https://www.instagram.com/myjumbula
+https://www.linkedin.com/company/jumbula/
+https://www.youtube.com/c/Jumbulame
+tel:(650)%20502-0350

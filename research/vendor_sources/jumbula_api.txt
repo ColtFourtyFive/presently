@@ -1,0 +1,249 @@
+URL: https://app.theneo.io/hassan-jumbula-com/jumbula2/getting-started/introduction
+
+Introduction - Hassan@jumbula.com Documentation
+Search or ask...
+Getting Started
+Sections
+Getting Started
+Introduction
+About the APIs
+Authentication & Authorization
+API Reference Guide
+Basics of APIs
+Base URL
+Rest API Reference
+Authentication API
+POST
+Create a token
+Coupon API
+POST
+Create a coupon
+PUT
+Update a coupon
+Family API
+POST
+Create a family
+GET
+Get a family
+PUT
+Update a family
+GET
+Get all family
+DELETE
+Delete a family
+POST
+Get all family
+POST
+Assign family
+POST
+Add participant to a family
+PUT
+Update a family participant
+DELETE
+Remove a participant from a family
+GET
+Get participant details
+GET
+Get family participants
+GET
+Get all participants in a family
+POST
+Search for participants
+PUT
+Update participant externalId
+POST
+Add parent to a family
+PUT
+Update a family parent
+DELETE
+Remove a parent from a family
+GET
+Get parent details
+GET
+Get family parents
+POST
+Search parents
+POST
+Create authorized pickup
+PUT
+Update authorized pickup
+DELETE
+Remove authorized pickup
+GET
+Get authorized pickup details
+GET
+Get family authorized pickups
+POST
+Search authorized pickups
+POST
+Create emergency contact
+PUT
+Update emergency contact
+DELETE
+Remove emergency contact
+GET
+Get emergency contact details
+GET
+Get family emergency contacts
+Dev Tools API Examples
+GET
+List branches
+GET
+Get a branch
+POST
+Rename a branch
+GET
+Get a schedule
+PATCH
+Update a schedule
+DELETE
+Delete a schedule
+Theneo Real APIs
+POST
+Add new project
+GET
+Get all projects
+GET
+Get project by id
+DELETE
+Delete project
+GET
+Get accessible users
+POST
+Share a project
+PATCH
+Change user access to a project
+POST
+Import API specification
+SOAP API Reference
+Payments / Banking API example
+POST
+Create bank account
+POST
+Create entity
+POST
+Create invoice
+DELETE
+Delete entity
+GET
+Get invoice ID by number
+GET
+List bank accounts
+GraphQL API Reference
+Query
+POST
+continent
+POST
+country
+POST
+language
+Objects
+Continent
+Country
+Language
+Scalars
+Boolean
+Float
+ID
+Int
+String
+Upload
+Directives
+cacheControl
+Search or ask...
+API explorer
+Changelog
+API explorer
+Changelog
+Theme switcher
+
+LINKS
+
+/hassan-jumbula-com/jumbula2/api-reference-guide
+/hassan-jumbula-com/jumbula2/api-reference-guide/base-url
+/hassan-jumbula-com/jumbula2/api-reference-guide/basics-of-apis
+/hassan-jumbula-com/jumbula2/getting-started
+/hassan-jumbula-com/jumbula2/getting-started/customizing
+/hassan-jumbula-com/jumbula2/getting-started/introduction
+/hassan-jumbula-com/jumbula2/getting-started/theneo-api-documentation
+/hassan-jumbula-com/jumbula2/graphql-api-reference
+/hassan-jumbula-com/jumbula2/graphql-api-reference/directives
+/hassan-jumbula-com/jumbula2/graphql-api-reference/directives/cachecontrol
+/hassan-jumbula-com/jumbula2/graphql-api-reference/objects
+/hassan-jumbula-com/jumbula2/graphql-api-reference/objects/continent
+/hassan-jumbula-com/jumbula2/graphql-api-reference/objects/country
+/hassan-jumbula-com/jumbula2/graphql-api-reference/objects/language
+/hassan-jumbula-com/jumbula2/graphql-api-reference/query
+/hassan-jumbula-com/jumbula2/graphql-api-reference/query/continent
+/hassan-jumbula-com/jumbula2/graphql-api-reference/query/country
+/hassan-jumbula-com/jumbula2/graphql-api-reference/query/language
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars/boolean
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars/float
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars/id
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars/int
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars/int-1
+/hassan-jumbula-com/jumbula2/graphql-api-reference/scalars/upload
+/hassan-jumbula-com/jumbula2/rest-api-reference
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-1-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-11
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-12
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-13
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-14
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-2
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-2-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-3
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-4
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-5
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-6
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-7
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-8
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/copy-9
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/create-a-coupon-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/create-authorized-pickup-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/create-authorized-pickup-copy-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/delete-a-family
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-a-family
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-all-family-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-all-family-copy-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-all-family-copy-2
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-family-parents-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-family-parents-copy-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-participant-details
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-participant-details-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/get-participant-details-copy-1
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/remove-a-parent-from-a-family-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/update-a-coupon-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy-1/update-a-family-copy-2
+/hassan-jumbula-com/jumbula2/rest-api-reference/coupon-api-copy/create-a-coupon-copy
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples/delete-a-schedule
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples/get-a-branch
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples/get-a-schedule
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples/list-branches
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples/rename-a-branch
+/hassan-jumbula-com/jumbula2/rest-api-reference/hr-management-examples/update-a-schedule
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/add-new-project
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/change-user-access-to-a-project
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/delete-project
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/get-accessible-users
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/get-all-projects
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/get-project-by-id
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/import-api-specification
+/hassan-jumbula-com/jumbula2/rest-api-reference/theneo-real-apis/share-a-project
+/hassan-jumbula-com/jumbula2/rest-api-reference/transaction-api-example
+/hassan-jumbula-com/jumbula2/rest-api-reference/transaction-api-example/create-a-charge
+/hassan-jumbula-com/jumbula2/rest-api-reference/transaction-api-example/update-a-charge
+/hassan-jumbula-com/jumbula2/soap-api-referenc
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example/create-bank-account
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example/create-entity
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example/create-invoice
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example/delete-entity
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example/get-invoice-id-by-number
+/hassan-jumbula-com/jumbula2/soap-api-referenc/payments-banking-api-example/list-bank-accounts

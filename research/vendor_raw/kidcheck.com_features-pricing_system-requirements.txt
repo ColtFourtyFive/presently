@@ -1,0 +1,104 @@
+System Requirements - KidCheck
+KidCheck
+Login
+info@kidcheck.com
+(208) 538-2000
+Menu
+Free Demo
+Request a Free Demo
+Videos
+Screenshots
+Customer Feedback
+Sign Up
+Features & Pricing
+Compare Editions
+Pricing
+System Requirements
+Blog
+KidCheck Store
+Support
+Support Center
+Best Practices
+Getting Started
+Quick Start Guide
+Roll Out Guide
+Express Check-In Setup
+Label Restock Program
+Roll Out Documents
+Request a Feature
+About Us
+News and Reviews
+Who We Are
+Contact KidCheck
+System Requirements
+Features and Pricing
+KidCheck Store
+KidCheck has a very modest list of requirements for the computers being used to run children’s check-in. To have the best possible experience the recommended system requirements are below.
+Computers used for administration and accessing information can be any platform and simply need to have a web browser and internet connection.
+A wired network connection is recommended for computer-based (Windows/Mac) check-in stations.
+Wired network connections can dramatically help the performance of computer-based check-in stations by reducing signal interference and speed variance.
+Learn more by reading our
+Wired And Wireless Networks Article
+.
+System Requirements:
+Computer-based check-in (Windows/Mac)
+|
+Mobile check-in (iOS/Android)
+Windows
+Mac OS X
+Recommended System Requirements for Children's Check-In:
+Hard Drive Space
+200 MB Free Space Available
+200 MB Free Space Available
+Memory
+4GB RAM
+4GB RAM
+CPU
+Dual-core, 2.2 GHz (or better)
+Intel Core 2 Duo (or better)
+Operating System
+Microsoft Windows 11
+OS X 10.15 through 26
+Web Browsers
+Google Chrome (Recommended)
+Safari
+Firefox
+Microsoft Edge
+Label Printers
+Brother QL-800 (Labels – DK-2205, White Tape Paper)
+DYMO LabelWriter 450
+DYMO LabelWriter 450 Turbo
+Brother QL-810W (Labels – DK-2205) – Not compatible with the wireless feature – will need to be connected via USB
+Brother QL-820NWB (Labels – DK-2205) – Not compatible with the wireless feature – will need to be connected via USB
+DYMO LabelWriter 400
+DYMO LabelWriter 400 Turbo
+DYMO LabelWriter 550
+Not Compatible
+Not Compatible
+DYMO LabelWriter Wireless
+Not Compatible
+Not Compatible
+Zebra Label Printers
+Not Compatible
+Not Compatible
+Note: KidCheck is not compatible with Chromebooks.
+Mobile Check-in (
+more info
+)
+Apple iPads (iOS 15.1 or later)
+Android Tablets (Android 7 or later)
+Amazon Fire Tablets
+Not Compatible
+* KidCheck ExpressHub recommended for mobile printing. (
+Learn More
+)
+Camera auto-focus required to scan keytags & barcodes. Check-in is not compatible with Windows 8 tablets, Amazon Kindles, or Barnes & Noble Nooks.
+KidCheck
+Info for Parents
+Shipping Policy
+Privacy Policy
+Cancellations & Returns
+KidCheck © 2026
+Login
+info@kidcheck.com
+(208) 538-2000

@@ -1,0 +1,147 @@
+brightwheel security FAQs | Brightwheel Help Center
+Skip to main content
+Log in to brightwheel 👤
+3 reasons to use billing
+English
+Français
+Español
+English
+Log in to brightwheel 👤
+3 reasons to use billing
+English
+Français
+Español
+English
+Search for articles...
+All Collections
+Login & Security
+Security
+brightwheel security FAQs
+brightwheel security FAQs
+Learn more about brightwheel's commitment and approach to security.
+Written by
+Audrey
+Updated today
+Table of contents
+Trust is a key building block in brightwheel’s promise to put you first, with ongoing improvements to ensure the safety, privacy, security, and reliability of your experience. We are proud to offer:
+Enhanced account safety
+with two-factor authentication, strict password requirements, and cloud-based storage using Amazon Web Services.
+A stringent
+Privacy Policy
+that dictates no personal information can be sold to third parties.
+Highest financial data security
+and compliance levels (PCI Level 1) for invoicing and processing payments, so no confidential banking information is stored on brightwheel.
+Ongoing reliability
+with 99.9% uptime and fraud protection with 24x7 monitoring by a dedicated in-house team. For a real-time update on brightwheel’s availability,
+see here.
+If you need to print the FAQs contained in the article for your program, right-click in your browser window and select
+Print
+.
+What is brightwheel's approach to data security?
+Brightwheel has the largest engineering team in the early education industry. In addition to 24x7 monitoring of all production data and infrastructure, there is an ongoing investment to employ the latest technology to keep your data safe.
+We meet the requirements of TX-RAMP Level 2, which draws directly from NIST SP 800-53, one of the most rigorous federal security frameworks, and is widely accepted across state government and higher education. Multi-factor authentication is required for all administrative access to the systems that process program data.
+What is brightwheel's data infrastructure?
+Data is encrypted in transit and at rest. All brightwheel application servers, databases, and backups are hosted within Amazon Web Services (AWS) data centers located in the United States. Program data is not hosted or stored outside the United States. Amazon continually manages risk and undergoes recurring assessments to ensure compliance with industry standards.
+ISO 27001
+SOC1 and SOC2 SSAE 16/ISAE 3402 (Previously SAS 70 Type II)
+PCI Level 1
+FISMA Moderate
+Sarbanes-Oxley (SOX)
+Data center staff monitor electrical, mechanical, and life support systems and equipment so issues are immediately identified. Preventative maintenance is performed to maintain the continued operability of equipment.
+View AWS SOC Compliance information
+here
+.
+Does brightwheel have a SOC 2 report?
+Brightwheel does not currently hold SOC 2 certification.
+Our hosting provider, Amazon Web Services (AWS), does hold SOC 1, SOC 2, and other accreditations for its data centers. Those are AWS certifications covering the hosting infrastructure and they do not cover the brightwheel application or brightwheel as an organization.
+Is brightwheel WCAG compliant?
+Brightwheel is partially conformant with WCAG 2.1 Level AA and committed to ongoing alignment with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. New features and redesigned components are designed to align with WCAG 2.1 AA. Brightwheel is a software platform and does not incorporate hardware.
+What is brightwheel's approach to application security?
+All brightwheel software is under continuous review. Brightwheel also undergoes periodic third-party security audits to ensure the safety of our application and infrastructure.
+Does brightwheel sell/share data with third parties?
+We do not sell any personal information to third parties, and your personal data is only used in accordance with our
+Privacy Policy
+. Only the information essential to operate brightwheel is shared with our service providers, and they may use it only for that purpose.
+We do not provide information to other companies to train their artificial intelligence models. Programs can upload data, and they can access, download, or request that data from us at any time.
+How does brightwheel safeguard my billing and payment information?
+Brightwheel has partnered with a payment processor (
+Stripe
+) that is certified as
+PCI Level 1
+, the most stringent level of certification available. See their
+security site
+for detailed information about their security measures.
+No one at brightwheel has any access to any customer banking records, and all families using brightwheel for payment have to go through a two-step authentication process to verify their accounts.
+Is brightwheel HIPAA or FERPA compliant?
+Brightwheel enables programs to stay compliant with FERPA. The Terms of Service and Privacy Policy have been written to protect student information in accordance with the FERPA requirements. Immunization and allergy records are protected and secured the same way as other student records.
+For HIPAA guidance, it is recommended you contact a HIPAA compliance officer directly. Although brightwheel meets many of the requirements of HIPAA, brightwheel does not certify HIPAA compliance for its platform. It’s important to note that the U.S. Department of Health & Human Services (HHS) has stated that
+HIPAA regulations do not apply to the type of information stored and collected in brightwheel or similar software
+. HHS explains that HIPAA does not apply to schools in most cases because a school: “(1) is not a HIPAA covered entity or (2) is a HIPAA covered entity but maintains health information only on students in records that are by definition “education records” under FERPA and, therefore, is not subject to the HIPAA Privacy Rule.
+Does brightwheel use single sign-on?
+At this time, single sign-on is not a feature available on the brightwheel application. However, brightwheel is the most secure all-in-one childcare and preschool software, setting the standard as the first and only early education app to offer two-factor authentication at sign-in for enhanced account protection.
+How would brightwheel handle a data breach?
+There is 24x7 monitoring by an in-house dedicated team, and if there is any suspicious activity observed, there are protocols in place to investigate and take action immediately, depending on the situation. If applicable, we notify affected programs, which then notify their families.
+To catch any unusual account activity, there are email notices sent to admins anytime a new admin is added to the program and to parents anytime a new student contact has been added for their student. These email notices are immediate security measures in place to alert you of any unusual activity. Ensure you review these security notices to determine the appropriate steps to follow in the event you do not recognize the activity.
+How does brightwheel handle a fraudulent charge(s)?
+We have a full team dedicated to monitoring payments and use industry-leading software to pre-emptively block high-risk charges. Our payment processor, Stripe, uses a machine learning model and has a vast network of data to determine if cards or individuals have been involved in fraud or disputes in the past.
+If a payer uses a fraudulent card that is later disputed, we will work with the program one-on-one to determine the best path forward. We understand how devastating this scenario can be, so our payment operations team looks at each case individually and communicates with your program to support you.
+What access do parents have when they leave a program?
+Activated parents can access their accounts until they are deactivated or removed from the student’s profile by the program. Activated parents and admins can request a parent’s account be deactivated, but the parent will ultimately have to finalize the deactivation using a link sent to them via email. Admins can remove a parent from a student’s profile at any time as well.
+Records belong to the program, so a request to delete them comes from the program. If the program does not request deletion, brightwheel retains data as long as necessary to provide the service and fulfill legitimate business, legal, and compliance purposes. There is not a single published automatic deletion timeline that applies universally.
+What is the best way to manage staff accounts when they leave a program?
+You can easily delete the staff member so they cannot login to brightwheel at your program. Timecards for deleted staff are still accessible and you can re-activate the profile at anytime if you wish to view their profile information. Please visit
+Remove Staff Members
+to learn more.
+For U.S. providers, why do I need to provide my Social Security Number to verify my company's billing account?
+Stripe, our credit card payment processor helps us disburse funds to you. Any organization that sends funds to individuals, businesses, etc., is required to collect and verify information about people, known as “Know Your Customer” (or KYC) checks. To perform these checks, Stripe needs to gather certain information so they can verify your identity. Stripe first attempts to verify you off of the minimum requested information (legal name, date of birth (DOB), and your Social Security Number (SSN)).
+Additional information about our payment processor, Stripe can be found
+here.
+Why am I being asked for my photo ID to verify my company's billing account?
+Sometimes Stripe needs to collect a little more information about a customer to fulfill these KYC checks, which is why we'll ask for your government issued ID. We often find that this can be from a recent name change or a typo.
+One quick thing you can do is double check that all the information you've provided is entered exactly as it is with the IRS and Social Security Administration.
+This verification is nothing to be concerned over, but is required for the safety of you, your parents, and all financial partners involved and must be completed in order to continue processing money through the brightwheel billing platform. If we are not able to successfully verify, deposits to your account will be put on hold until we are able to do so.
+What are some tips administrators, staff, or families can follow to protect their accounts and keep their data secure?
+💡Tips for Admins, Staff, and Families
+What actions can I take to keep my account as secure as possible?
+Keep your brightwheel app up to date
+to ensure you are using the most secure version of brightwheel.
+It can be updated manually or set up for automatic updates to be downloaded each time a new version is released.
+Use
+two-factor authentication
+at sign-in and do not disable it.
+This is a security best practice and is designed to make sure that you’re the only person who can access your account, with the use of two different forms of verification.
+Frequently rotate passwords and make sure it meets
+minimum security requirements
+. Ensure it’s unique, long, and memorable with symbols, letters, and numbers.
+Set up a passcode
+on your device’s lock screen
+to prevent anyone from being able to just pick up your device and dig into your data.
+💡Tips for Admins and Staff
+How should I manage any photos and videos I’ve taken on my personal device and uploaded to brightwheel?
+We recommend establishing a weekly practice of deleting all photos and videos you’ve taken on your personal device once they’ve been uploaded and shared to a student’s feed. This is a best practice to ensure photos and videos that don’t need to be don’t continue to be stored on your device.
+What are the best practices for shared logins?
+We strongly recommend you avoid sharing login information at your program. If multiple staff are using the same device, use
+Room Device Mode
+. If staff already share a login, remember to change passwords at the time of termination.
+💡Additional Tips for Admins Only
+How can I best manage staff access at my program?
+Review our
+Teacher and Staff Permissions
+resource to understand what role options are available to use in your program and then assign staff the appropriate role depending on your program’s needs.
+How can I leverage brightwheel further to improve my program’s security and offerings?
+If you’re not already using brightwheel Billing, we highly recommend implementing this feature in your program! You can encourage families to pay online using brightwheel, and they can add their own payment details. This way, families directly enter their payment details, and your program is not responsible for storing their information or safeguarding checks/cash until deposited.
+If you have questions related to brightwheel security or similar topics, please
+contact our Support team
+for further assistance!
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+Brightwheel Website
+Early Education Resources
+Blog
+Purchase Experience Curriculum

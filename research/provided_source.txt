@@ -1,0 +1,152 @@
+PAGE 1
+Student Check-In / Check-Out System Requirements  
+and Non-Exhaustive Informational Vendor List 
+ 
+This document outlines the baseline check-in/check-out system requirements and provides a non-
+exhaustive vendor reference list to help franchisees begin their own research. Franchisees may 
+select any system that meets Kumon system requirements and applicable legal/compliance 
+obligations; they are not limited to the vendors listed below. 
+ 
+Once requirements are finalized and implemented, Centers will be expected to certify annually that 
+their check-in/check-out system meets the applicable requirements, and centers may be asked to 
+demonstrate the system during applicable review processes. 
+ 
+Baseline Requirements Checklist 
+ 
+Requirement Franchisee / Center Confirmation 
+1. Digital System Required ☐ The center uses a digital check-in/check-out system. Manual logs, 
+paper-based methods, or Excel-only tracking are not used as the 
+baseline method. 
+2. Unique Student 
+Identification 
+☐ Each student is uniquely identifiable within the system, such as by 
+name, student ID, barcode, PIN, QR code, or another consistent 
+identifier. 
+3. Actual Arrival and Departure ☐ Check-in and check-out entries reflect actual student arrival and 
+departure and are not entered later only for recordkeeping purposes. 
+4. Staff Oversight and Training ☐ Staff understand the check-in/check-out process and consistently 
+follow it as part of daily center operations. 
+5. Current Student Awareness ☐ Staff can determine who is currently present when needed and can 
+access historical attendance records for review when needed. 
+6. Backup or Data Preservation 
+Approach 
+☐ The center has a reasonable approach to preserve necessary 
+attendance data or maintain access to check-in/check-out information if 
+the primary system is unavailable. 
+7. Appropriate Handling of 
+Student Information / 
+Personally Identifiable 
+Information (PII) 
+☐ Student information, including personally identifiable information (PII), 
+is protected and limited to what is reasonably needed to support the 
+check-in/check-out workflow. 
+8. Reviewable and Retained 
+Records 
+☐ Attendance records are reviewable when needed and retained for at 
+least two years. 
+ 
+ 
+ 
+ 
+ 
+ 
+
+PAGE 2
+Informational Vendor List — Non-Exhaustive Examples 
+The vendors below are provided as non-exhaustive examples to help franchisees begin vendor research. 
+Franchisees may use vendors not listed here if the selected system meets applicable requirements. 
+As a general reference only, digital attendance or check-in/check-out systems may range from approximately 
+$25–$75 per month depending on vendor, center size, selected services, and other factors; pricing must be 
+confirmed directly with each vendor. 
+ 
+Platform / Vendor + Website Region / Fit Check-In / Check-Out Functionality 
+Lillio (formerly HiMama) 
+https://www.lillio.com/ 
+Canada / US; childcare and 
+early learning 
+Public materials list contactless daycare sign-in/out 
+and attendance features. Confirm center fit and 
+record/report access directly. 
+Digital Childcare 
+https://mydigitalchildcare.com/ 
+Canada; licensed childcare, 
+agencies, and multi-location 
+providers 
+Public materials describe digital check-in/check-out 
+attendance tracking and real-time attendance 
+visibility. Confirm workflow and record retrieval 
+directly. 
+Procare 
+https://www.procaresoftware.com/ 
+US / Canada; childcare, 
+preschool, Head Start, ECE, 
+and youth programs 
+Public materials list contactless check-in/out, drop-
+off/pick-up tracking, QR-based check-in, check-in 
+monitor, and reporting. Confirm selected-plan features 
+directly. 
+brightwheel 
+https://mybrightwheel.com/ 
+US / Canada; childcare, 
+preschool, and early 
+education 
+Public materials describe Attendance Mode for staff 
+check-in/check-out, room moves, absence marking, 
+and check-in reports. 
+KidCheck 
+https://www.kidcheck.com/ 
+US / Canada; child/youth 
+programs, churches, camps, 
+and activity centers 
+Public materials describe secure child check-in, 
+attendance tracking, roster check-in, at-a-glance 
+check-in status, and attendance reports. Confirm 
+learning-center fit directly. 
+Playground 
+https://www.tryplayground.com/ 
+US; childcare operations Public materials list digital family/staff check-in/out, 
+Kiosk Mode with QR/PIN, ratio dashboards, and 
+attendance logs. 
+Famly 
+https://www.famly.co/us 
+US; childcare and early 
+education 
+Public materials describe check-in/out screens, QR 
+check-in/out, signed-in tracking, and child attendance 
+records. 
+Daily Connect 
+https://www.dailyconnect.com/ 
+Childcare, daycare, and 
+preschool; verify availability 
+in center location 
+Public help materials describe a sign-in kiosk and 
+PIN-code or touchless/QR options for signing children 
+in/out. 
+Jumbula 
+https://jumbula.com/ 
+US; schools, camps, after-
+school, and youth programs 
+Public materials describe check-in/check-out using 
+PIN/QR codes for authorized users, live attendance 
+monitoring, and staff/admin actions. 
+EZChildTrack 
+https://www.ezchildtrack.com/ 
+US; after-school, extended 
+day, and childcare programs 
+Public materials describe attendance tracking with 
+touchless QR code options and device-based check-
+in/check-out recording. Confirm on-site visibility and 
+retention details directly. 
+Disclaimer 
+This document is provided for informational purposes only to assist franchisees in conducting their own research. The vendors listed 
+are non-exhaustive examples and do not constitute a recommendation, endorsement, or approval by Kumon North America, Inc. 
+Franchisees are responsible for conducting their own due diligence, including reviewing functionality, privacy, security, 
+implementation feasibility, support, compliance needs, and contract terms. 
+ 
+Franchisees are solely responsible for evaluating, selecting, and contracting with any vendor. Kumon is not a party to, and assumes 
+no responsibility or liability for, any vendor’s performance, products, or services. 
+ 
+Vendor information, including capabilities and pricing, is subject to change and must be confirmed directly with each vendor. Any 
+pricing references are illustrative only and should not be treated as quotes or guarantees. Franchisees must ensure that any 
+selected vendor complies with applicable laws and Kumon system requirements. 
+ 

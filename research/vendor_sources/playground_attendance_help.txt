@@ -1,0 +1,388 @@
+URL: https://help.tryplayground.com/en/articles/16111397-attendance-overview
+
+Attendance Overview | Playground Help Center
+Copyright (c) 2023, Intercom, Inc. (
+[email protected]
+) with Reserved Font Name "Inter".
+      This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Copyright (c) 2023, Intercom, Inc. (
+[email protected]
+) with Reserved Font Name "Inter".
+      This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Skip to main content
+Go to your Playground account
+Recent Updates
+English
+Español
+English
+Go to your Playground account
+Recent Updates
+English
+Español
+English
+Search for articles...
+All Collections
+For Single-Site Administrators
+Attendance
+Overview
+Attendance Overview
+Attendance Overview
+How attendance works in Playground for students and staff, and where to find it
+Written by
+Zach Fortin
+Updated over 3 weeks ago
+Table of contents
+A quick tour of how attendance works in Playground — what gets tracked, where it lives, and how it connects to the rest of your account.
+General Information
+Playground tracks
+two kinds of attendance
+— student
+check-in
+/
+check-out
+and staff
+clock-in
+/
+clock-out
+. They're recorded separately and reported on separately.
+Attendance can be recorded from the
+admin dashboard
+, the
+Playground
+mobile app, or a shared
+Kiosk
+device. All three write to the same record, so it doesn't matter which one your school uses day to day.
+Every check-in and check-out is
+timestamped and attributed
+to whoever signed — a family member or a staff member. That signature trail is what licensing reports are built from.
+Attendance is
+per-site
+. Each school has its own roster, its own Kiosk, and its own attendance settings.
+Attendance doesn't just sit in reports — it feeds
+classroom ratios
+,
+overage billing
+,
+subsidy submissions
+, and
+payroll
+. More on that below.
+Admins can edit or add attendance records after the fact, so a missed check-out doesn't leave a permanent gap in your records.
+How Attendance Is Recorded
+There are four ways attendance gets into Playground, and most schools use a mix of them.
+Kiosk Mode
+— a locked-down tablet at your front door. Families sign in and out by scanning a
+QR code
+or entering their
+PIN
+. This is the most common setup for schools that want families signing for their own children.
+Teacher check-in on mobile
+— teachers check students in and out from the
+Roster
+in the mobile app, one at a time or in bulk.
+Contactless
+— a teacher sends a signature request to the guardian's own phone, and the guardian signs from the curb or the parking lot.
+Admin dashboard
+— you can check students in and out, or correct existing records, from the
+Students
+tab on web.
+💡 Signatures collected on a Kiosk or on a guardian's phone carry the same weight as a teacher-recorded check-in. You can require signatures for drop-off, pick-up, or both on a per-classroom basis.
+For the full walkthrough of each method, see
+Log & Manage Student Attendance
+,
+Student Attendance for Teachers
+, and
+Manage Student Attendance as a Family
+.
+Student Attendance
+Your
+Students
+tab is the fastest place to see where everyone stands right now. The summary tiles at the top show how many students are
+Signed in
+,
+Signed out
+, and
+Absent
+today, and the
+Attendance status
+column tags each student as
+Checked in
+or
+Checked out
+. On mobile, teachers see the same thing as colored dots on the
+Roster
+— green for checked-in, red for checked-out, orange for absent.
+To dig into one child's history, open their profile and go to the
+Activity
+tab. You'll find three logs there: the
+Attendance Log
+for daily check-ins and check-outs, the
+Program attendance log
+for program check-ins, and the
+Transition Log
+for classroom movement throughout the day.
+Anything that looks wrong can be fixed from that same log. Opening a record gives you an
+Edit times
+window where you can adjust a check-in, add a missing check-out, or delete a record entirely.
+Absences
+An absence is Playground's way of saying "this child was scheduled today but isn't coming." Admins and teachers can record one from a student's profile, and families can submit their own from the mobile app if you've turned that on.
+Absences come in three flavors —
+Full Day
+,
+Partial Day
+, and
+Multiple Days
+. A full-day absence marks the student absent on their schedule and overrides any hours they were logged as present. A partial-day absence splits their scheduled day around the absence window and leaves their check-in status as-is.
+Recording an absence also creates an absence post on the
+Feed
+, which is how families see it. Deleting that post removes the absence.
+Staff Attendance
+Staff record their own time with
+clock-in
+and
+clock-out
+, just like families do with their students.
+To review or correct anyone's time, open the
+Staff
+tab, pick a staff member, and go to the
+Hours
+tab. The
+History
+section lists every clock-in and clock-out, and the
+Record
+menu lets you add hours, log a training block, or record time off. Breaks are calculated automatically from the gap between a clock-out and the next clock-in, and they're excluded from both regular and billable hours.
+Full detail lives in
+Manage & Edit Staff Attendance
+and
+Staff Schedules, Hours Reports, & Approving Time Off/PTO
+.
+Live Attendance Views
+Your
+Dashboard
+has three tabs that read directly off today's attendance, so you don't have to run a report to know what's happening on the floor.
+Ratios
+— groups your classrooms by ratio status based on who's currently checked in and clocked in, showing
+Current
+versus
+Max
+, plus
+Staff
+and
+Students
+counts for each room. Rooms without a ratio target land under
+No ratio set
+.
+Clocked hours
+— today's staff
+Hours
+,
+Time off
+,
+Billable hours
+, and
+Billable amount
+, with arrows to step through other days.
+On my way
+— families who've signaled they're en route for pick-up.
+Your
+Classrooms
+tab gives you the same picture room by room, with
+Students
+,
+Checked in
+, and
+Present ratio
+columns and a banner when a room is over capacity.
+Related reading:
+Manage Classroom Ratios
+,
+Name to Face
+, and
+On My Way Queue For Admin
+.
+Attendance Reports
+Everything attendance-related is grouped under the
+Attendance
+category on your
+Reports
+tab. Pick a
+Report Type
+, set your date range, and click
+Generate Report
+— then
+Print
+for licensing or
+Export
+to pull the data into a spreadsheet.
+A few you'll reach for most often:
+Report Name
+Description
+Use Case
+Attendance - Daily
+The licensing standard — sign-in/out with the signature of whoever signed, including morning and afternoon.
+View when students were checked in and out on specific days.
+Attendance - Total time
+How long each student was checked in per day.
+Attendance Percentage
+Attendance rates across a date range.
+Useful for enrollment and utilization questions.
+Scheduled hours
+Scheduled hours compared against hours actually attended.
+Ratio
+Staff-to-student ratio broken out by time interval.
+View which staff and students were checked into classrooms at specific times.
+Daily Absences
+/
+No Shows
+Who was marked absent, and who was scheduled but never checked in.
+View which students aren't attending when they should be.
+Blank Attendance
+A printable paper sheet for days when you need to sign in by hand.
+Staff time has its own home under the
+Staff Payroll
+reports. See
+Attendance Reports
+for the complete list and
+Payroll Reports
+for staff hours.
+Attendance Settings
+Your attendance rules live in the
+Attendance
+section of
+Settings
+→
+General
+. This is where you decide how much families can do on their own and how signing works at your door.
+Kiosk Mode
+— launch
+Open kiosk mode
+, download the QR code for printing, and turn on
+Refresh QR code every minute
+if you want the code to rotate.
+School PIN code
+— the code that locks and unlocks Kiosk Mode. This is separate from anyone's personal signing PIN.
+Wellness check
+— require guardians to complete a health screening when signing in.
+Contactless (Sign-in/out)
+— control whether signature requests can go to a guardian's own device instead of the school device.
+Parents can mark absences
+— let families record absences for their own students.
+On my way queue
+— turn the pick-up queue on or off.
+Staff-side controls sit a little further down the same page under
+Teacher permissions
+— including
+Track staff current classroom
+,
+Restrict app access while clocked out
+,
+Restrict teacher check in hours
+,
+Round staff hours
+, and
+Staff hours close date
+. The
+Geofence
+setting near the top of
+Settings
+→
+General
+is what limits mobile check-ins to your physical location.
+🚨
+Round staff hours
+and
+Staff hours close date
+both affect historical records. Turning on rounding updates past timesheets, and setting a close date blocks edits to staff hours on or before that date.
+Where Attendance Data Goes
+Attendance is one of the most connected pieces of data in Playground. Once a check-in is recorded, it shows up in several other places automatically.
+Ratios & capacity
+Live ratio calculations use who is currently checked in and clocked in.
+Billing
+Time checked in past a student's scheduled hours drives overage fees, and absences open slots for drop-in care bookings.
+Subsidy
+Attendance records are the source for the data you submit to subsidy agencies.
+Payroll
+Staff clock-ins flow into
+Playground Payroll
+, and paid absences carry over automatically.
+Door locks
+Where connected, a Kiosk sign-in can trigger your door hardware.
+Because so much depends on it, clean attendance is worth the attention. If your numbers look off,
+Resolve discrepancies and errors in attendance reports
+is the place to start.
+Related Articles
+Log & Manage Student Attendance
+— Kiosk setup, PIN and QR codes, recording and editing attendance, absences
+Student Attendance for Teachers
+— single and bulk check-in, contactless, geofencing
+Manage Student Attendance as a Family
+— what the experience looks like on the family side
+Manage & Edit Staff Attendance
+— clock-in methods, editing hours, breaks, training time
+Attendance Reports
+— every report type, printing, and exporting
+Student Schedules
+— the schedules absences and overage fees are measured against
+Manage Classroom Ratios
+— setting the ratio targets your Dashboard checks against
+Manage & Submit Subsidy Attendance Data
+— sending attendance to subsidy agencies
+Resolve discrepancies and errors in attendance reports
+— fixing mismatched numbers
+Attendance Troubleshooting for Multi-Site Admins
+— org-level attendance issues
+Related Articles
+Student Attendance Reports
+Manage Classroom Ratios
+Manage & Edit Staff Attendance
+Log & Manage Student Attendance
+Reports Overview
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+Fin
+We run on Fin
+
+LINKS
+#h_absences
+#h_attendance_reports
+#h_attendance_settings
+#h_general_information
+#h_how_attendance_is_recorded
+#h_live_attendance_views
+#h_related_articles
+#h_staff_attendance
+#h_student_attendance
+#h_where_attendance_data_goes
+#main-content
+/cdn-cgi/l/email-protection
+/en/
+https://app.tryplayground.com/signin
+https://downloads.intercomcdn.com/i/o/1068153813/ef412b42fc36e55589e5cbe8/Screenshot+2024-05-31+at+5_07_00%E2%80%AFPM.png?expires=1789407900&signature=80bb34eb135a2fb5562ae5ed139390bc6b58be2bfdf4c3fdb20eb67e701dff08&req=dSAhHsh7noleWvMW1HO4zZ1XLl5k59n9wRL8f4Je56H9mrno5EHpVpypdmTi%0ANrZTD0pVcXExGzV4FBM%3D%0A
+https://downloads.intercomcdn.com/i/o/ijjbrcjn/1536502492/979792cd6734a1a9f3a1f6be743a/image.png?expires=1789407900&signature=5444e43e53b0b45de2c407ec8d07dc997433a3423035515706372e985317cc46&req=dSUkEMx%2Bn4VWW%2FMW1HO4zb5aNLeZ%2FJr%2BS37phkbdWaThLoNY9Ng3Ym5OyRtk%0AMyiGThQNIFYzSQfuXEs%3D%0A
+https://help.tryplayground.com/en/articles/13381696-resolve-discrepancies-and-errors-in-attendance-reports
+https://help.tryplayground.com/en/articles/13510608-reports-overview
+https://help.tryplayground.com/en/articles/14856350-attendance-troubleshooting-for-multi-site-admins
+https://help.tryplayground.com/en/articles/5098494-attendance-reports
+https://help.tryplayground.com/en/articles/5098494-student-attendance-reports
+https://help.tryplayground.com/en/articles/5607208-student-schedules
+https://help.tryplayground.com/en/articles/6991485-manage-submit-subsidy-attendance-data
+https://help.tryplayground.com/en/articles/7017015-payroll-reports
+https://help.tryplayground.com/en/articles/7216891-staff-schedules-hours-reports-approving-time-off-pto
+https://help.tryplayground.com/en/articles/8011045-manage-classroom-ratios
+https://help.tryplayground.com/en/articles/8295501-name-to-face
+https://help.tryplayground.com/en/articles/9376492-manage-edit-staff-attendance
+https://help.tryplayground.com/en/articles/9407326-manage-student-attendance-as-a-family
+https://help.tryplayground.com/en/articles/9442141-on-my-way-queue-for-admin
+https://help.tryplayground.com/en/articles/9628143-log-manage-student-attendance
+https://help.tryplayground.com/en/articles/9797115-student-attendance-for-teachers
+https://help.tryplayground.com/en/collections/19181286-attendance
+https://help.tryplayground.com/en/collections/19181361-overview
+https://help.tryplayground.com/en/collections/2966010-for-single-site-administrators
+https://www.intercom.com/intercom-link?company=Playground&solution=customer-support&utm_campaign=intercom-link&utm_content=We+run+on+Intercom&utm_medium=help-center&utm_referrer=http%3A%2F%2Fhelp.tryplayground.com%2Fen%2Farticles%2F16111397-attendance-overview&utm_source=desktop-web
+https://www.tryplayground.com/changelog

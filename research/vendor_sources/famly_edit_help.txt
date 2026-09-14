@@ -1,0 +1,90 @@
+URL: https://help.famly.co/en-us/articles/5477196-edit-a-child-s-check-in-or-out-time
+
+Edit a Child's Check-in or Out Time | Famly Help Center
+Skip to main content
+Dansk
+English
+English (United States)
+Deutsch
+Norsk
+English (United States)
+Dansk
+English
+English (United States)
+Deutsch
+Norsk
+English (United States)
+Search for articles...
+All Collections
+The Famly Platform
+Children and Daily Care
+Attendance and Care
+Edit a Child's Check-in or Out Time
+Edit a Child's Check-in or Out Time
+Written by
+Josie
+March 2, 2026
+Table of contents
+Where to Find a Child’s Check-In and Check-Out Times
+You can view when a child was checked in or out from their
+Activity
+feed on their profile. This shows a timestamp for each check-in and check-out action.
+💡 If a child is marked as sick after they have already been checked in for the day, the system will display
+Checked out by Famly
+You can also find check-in and check-out information in the
+Child attendance
+.
+Editing a Child’s Check-In and Check-Out Times
+If you need to update a child’s check-in or check-out time, this can be done from
+Child attendance
+.
+To edit the times:
+Go to
+Attendance
+in your sidebar and select
+Child attendance
+Use the date picker at the top and click in any cell to edit a child's check-in information for that day
+A pop-up window will appear. From here, you can:
+Click the pen icon to edit existing check-in or check-out times
+Add new check-in or check-out times
+Remove check-in or check-out times
+Add a vacation day
+Add a sick day
+Once you have made the necessary changes, click
+Update
+to save them.
+Related Articles
+Classroom Planner
+Check Children In and Out
+Child Activity Statuses
+Custom Statuses
+Child Attendance
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+
+LINKS
+#h_cd346be5a0
+#h_e29f62ea6d
+#main-content
+/en-us/
+https://downloads.intercomcdn.com/i/o/fazkk12b/2118742866/f4fcc6553ba4a23d2bb20877bf3d/Section%2B-%2Bfree%2Bsizing%2B-%2B2026-03-02T091426_642.jpg?expires=1789407900&signature=f9899cb4cc59278d185a98a1bb19262aab3de5e6eefa54221ceae809e5caef70&req=diEmHs56n4lZX%2FMW1HO4za9t9y4nQGKZm0%2BoeSVWmIFopu%2FC0wjBOaNJnXUD%0AOvLPY0yuq1kgshJCyqo%3D%0A
+https://downloads.intercomcdn.com/i/o/fazkk12b/2118742871/feb026c6677803dc9f80b5b0029b/Section%2B-%2Bfree%2Bsizing%2B-%2B2026-03-02T091029_764.jpg?expires=1789407900&signature=8161423973a087d907035b3d506ee5f1f796fd6c3799e04fe569f0371cc4eaab&req=diEmHs56n4lYWPMW1HO4zd3TeEbm6skZVSNz66gfwLCuHrMVpI1Mh5Ki8pDv%0AwLNLg8U0yQyqdty%2FYCY%3D%0A
+https://help.famly.co/en-us/articles/4912140-classroom-planner
+https://help.famly.co/en-us/articles/4912330-check-children-in-and-out
+https://help.famly.co/en-us/articles/5187151-child-activity-statuses
+https://help.famly.co/en-us/articles/9356011-custom-statuses
+https://help.famly.co/en-us/articles/9356376-child-attendance
+https://help.famly.co/en-us/collections/18529532-the-famly-platform
+https://help.famly.co/en-us/collections/18529535-children-and-daily-care
+https://help.famly.co/en-us/collections/18529539-attendance-and-care
+https://www.facebook.com/famlyhq/
+https://www.instagram.com/famlyhq
+https://www.linkedin.com/company/famly/
+https://www.twitter.com/famlyhq
+https://www.youtube.com/@Famly

@@ -1,0 +1,133 @@
+URL: https://help.famly.co/en-us/articles/8075420-qr-code-check-in-out-screen
+
+QR Code Check-in/out Screen | Famly Help Center
+Skip to main content
+Dansk
+English
+English (United States)
+Deutsch
+Norsk
+English (United States)
+Dansk
+English
+English (United States)
+Deutsch
+Norsk
+English (United States)
+Search for articles...
+All Collections
+The Famly Platform
+Children and Daily Care
+Attendance and Care
+QR Code Check-in/out Screen
+QR Code Check-in/out Screen
+Written by
+Josie
+March 2, 2026
+Table of contents
+Checking children in and out of the nursery is made simple with the separate Check-in/out screen. The screen can be set up to allow parents to check in their child with additional security features such as a PIN code and now a QR code. This article outlines how to set up and use the Check-in/out screen with the
+QR Code Check-in/out feature
+.
+How does the QR Code Check-in/out feature work?
+Once the QR Code Check-in/out feature has been toggled on for your center via your
+Settings
+, we recommend placing a tablet that's logged into the Check-in/out screen at the entrance in a spot that easy for parents to access.
+The tablet will show a QR code for parents to scan with their own devices. This QR code will automatically update every 5 seconds to ensure that parents cannot share a picture of it with others (such as with a PIN code that can easily be shared or forgotten) or check their children in or out unless they're inside the center.
+Scanning the QR code will lead parents to complete the Check in/out flow from their own devices. Parents have 15-30 minutes to complete the Check in/out flow before the process times out and they need to scan the QR code again.
+Once complete, their child will be checked in and this will be reflected in the room overview and the activity feed for that child.
+How to set up QR Code Check-in/out
+The QR Code Check-in/out feature will automatically appear once you've toggled it on in
+Settings →
+Check in/out
+.
+Once you've toggled on the QR check in feature, log into your Check-in/out screen by clicking on
+Show password
+and entering it after clicking
+Go to Famly Check-in
+. If the QR code doesn't show right away, log out and in again to refresh your Check-in/out screen.
+Please note, if you turn off your tablet in the afternoon or evening or log out of the Check-in/out screen, you’ll need to log back in the next day. You can do this by going to the icon you added on your home screen and using the password found in
+Settings →
+Check in/out
+(this password will update every day).
+Getting parents started
+Let parents know that they'll need a smartphone with access to a camera in order to use the QR Code Check-in/out screen. It is important that they
+update their app
+to the latest version of Famly This can be done in the app store on their smartphone.
+If parents choose to use the camera app on their smartphone, they don't need to do any further setup and can get scanning right away.
+If they use the in-app scanner within the Famly app, they'll need to give Famly permission to use the camera by toggling this on in their phone settings as they would do with any other app.
+Printing the QR code
+If you'd prefer to have a static QR code for parents to scan, you can choose to print it out. This is a great option if your center does not have a digital tablet at the entrance.
+To print your QR code, head to
+Settings →
+Check in/out
+and scroll down to the
+Print QR code
+section. Click on
+Print
+from here to open your print options. If you'd like to print a new QR code, simply click on
+Refresh QR code
+and click on
+Print
+again. A new QR code will be generated.
+If you'd like to use the digital QR code on a tablet as well as a printed version elsewhere at your center, you can, of course, use both methods at the same time.
+QR Code Check-in and PIN Check-in
+If you'd like to use both the PIN Check-in/out screen and the QR code Check-in/out screen, you can enable both of these option by toggling on
+PIN code required for check in
+and
+QR check in
+in
+Settings →
+Check in/out.
+Enabling both of these options will display the Check-in/out screen on your tablet like so:
+How to disable QR Code Check-in/out
+You can switch off the QR Code Check-in/out feature by going to
+Settings →
+Check in/out
+and toggling off the QR Code Check in there. If you are unable to toggle this feature off, or if you have any questions, please don't hesitate to reach out to
+support@famly.co
+.
+FAQs
+If a parent or member of staff run into any issues using the QR Code Check-in/out screen, try asking the following questions to troubleshoot:
+Have they updated their app to the latest version?
+If they're still having trouble, collect some information about the device they're using (make and model) and get in touch with
+support@famly.co
+Related Articles
+The Check-in/out Screen
+Setting Up the Check-in Screen with a PIN Code
+Setting Up the Check-in Screen on an iPad
+Parents 🧸 : Using Two-factor Authentication to Access the App
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+
+LINKS
+#h_170dcd27f1
+#h_5e0fb0c0fd
+#h_7fd9ddc970
+#h_89f9c3ac1b
+#h_a4c669c6f8
+#h_cb7576bfac
+#h_cdda3442b7
+#main-content
+/en-us/
+https://downloads.intercomcdn.com/i/o/fazkk12b/2118767427/ed34e5bdd5026ab76bbf9dcd1833/Screenshot%2B2024-05-06%2Bat%2B13_43_25.png?expires=1789407900&signature=509a75f3768834c5a76aadfaaf3f6625d7b68977b21002a4d15469893eb01687&req=diEmHs54moVdXvMW1HO4zV%2BS4e95KA4s30F1I149EWwDqMCK0jHsBhN21TbI%0ACVWCFBgJrKXwy75R490%3D%0A
+https://downloads.intercomcdn.com/i/o/fazkk12b/2118767428/585adc6cda6352d628af58c30a17/Screenshot%2B2023-06-23%2Bat%2B14_54_30.png?expires=1789407900&signature=daeac691a5e1a1f20150a57a839265c69e7a8f4298d1ffae5fa4c44864247388&req=diEmHs54moVdUfMW1HO4zWDAMkiWHJLvXu0NMs4B4gxzTBS%2BtJeAbIfFgfb%2F%0A0kIw6%2BxNgYp56es96v8%3D%0A
+https://downloads.intercomcdn.com/i/o/fazkk12b/2118767430/40a31a1e780c927184e7c0859f1a/Screenshot%2B2023-04-26%2Bat%2B3_03_03%2Bpm.png?expires=1789407900&signature=8839cc0f2904e6cd666f45f8faa7868ccc5a8b73c1ede5a6b25f265d604ec958&req=diEmHs54moVcWfMW1HO4zU8u1G%2BOmWNvkaePexjvyiV9PbDFfcXKLzS4cP%2Bc%0AEXg6ukJXXKfVVmwwVMs%3D%0A
+https://help.famly.co/en-us/articles/4912295-the-check-in-out-screen
+https://help.famly.co/en-us/articles/4912303-setting-up-the-check-in-screen-with-a-pin-code
+https://help.famly.co/en-us/articles/4912344-setting-up-the-check-in-screen-on-an-ipad
+https://help.famly.co/en-us/articles/5602954-parents-using-two-factor-authentication-to-access-the-app
+https://help.famly.co/en-us/collections/18529532-the-famly-platform
+https://help.famly.co/en-us/collections/18529535-children-and-daily-care
+https://help.famly.co/en-us/collections/18529539-attendance-and-care
+https://www.facebook.com/famlyhq/
+https://www.instagram.com/famlyhq
+https://www.linkedin.com/company/famly/
+https://www.twitter.com/famlyhq
+https://www.youtube.com/@Famly
+mailto:support@famly.co

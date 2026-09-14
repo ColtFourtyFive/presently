@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.data/
+.railway/
+tmp/
+test-results/
+playwright-report/
+LOCAL_ACCESS.md
+.DS_Store
+*.log
+__pycache__/

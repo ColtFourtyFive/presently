@@ -1,0 +1,621 @@
+URL: https://www.tryplayground.com/solutions/api
+
+Playground API | Connect Playground to Your Business
+Platform
+Switch to Playground
+Built for
+Resources
+(646) 566-8590
+Get demo
+Get demo
+API
+Connect your software, reporting, and AI tools to Playground
+Playground gives operators, developers, and partners secure access to the data powering their child care business. Use our APIs and MCP server to build custom workflows, automate operations, and make Playground the foundation behind your tech stack.
+Get a free demo
+Get a free demo
+Join
+500,000+
+owners, directors, teachers, and families already on Playground
+Respond first
+One platform. Multiple ways to connect.
+Connect through our API
+which is designed for traditional software integrations.
+Sync data between systems
+Sync data between systems
+Build custom applications
+Create dashboards and reporting tools
+Import leads from external sources
+Connect operational systems
+Connect through our MCP
+which is designed for AI-powered workflows.
+Connect Claude and ChatGPT to Playground
+Connect Claude and ChatGPT to Playground
+Build custom AI assistants, copilots and employees
+Create AI-powered reporting workflows
+Enable natural language access to business data
+Enable natural language access to business data
+Dynamic source of truth
+Build on top of Playground
+Build on top of Playground
+Playground helps modern child care teams connect the systems they already use while unlocking new opportunities for automation and intelligence.
+Playground helps modern child care teams connect the systems they already use while unlocking new opportunities for automation and intelligence.
+CRM & Lead Capture
+Push leads from Meta Ads, landing pages, embedded forms, and partner platforms straight into Playground, with attribution, guardians, and qualification data captured automatically.
+CRM & Lead Capture
+Push leads from Meta Ads, landing pages, embedded forms, and partner platforms straight into Playground, with attribution, guardians, and qualification data captured automatically.
+Enterprise Reporting
+Centralize reporting across programs, enrollment pipelines, billing, capacity, and rosters. Built for multi-location operators and internal reporting teams.
+Billing & Financial Sync
+Export payments, charges, discounts, subsidy data, and accounting metadata downstream so Playground stays the operational source of truth.
+AI-Powered Operations
+Build executive reporting assistants, analyze enrollment trends, forecast growth and capacity, surface operational insights, and create custom copilots for leadership teams.
+AI-Powered Operations
+Build executive reporting assistants, analyze enrollment trends, forecast growth and capacity, surface operational insights, and create custom copilots for leadership teams.
+Developer-friendly
+Connect Claude, ChatGPT and AI Agents
+Playground hosts a dedicated MCP server that lets AI systems securely retrieve information from your account, so organizations can use Claude, ChatGPT-compatible MCP clients, agent frameworks, and internal AI systems to build powerful workflows on top of operational data. Instead of exporting spreadsheets or manually building reports, simply ask.
+Ask things like:
+Which locations are growing fastest?
+Which classrooms are nearing capacity?
+How did enrollment change last month?
+Which families have overdue balances?
+What is our current enrollment conversion rate?
+Forecast our tuition revenue for next quarter.
+Need something custom?
+The current API surface is just the beginning. If your team needs access to additional Playground data sets, new endpoints can be added using the same authentication and response patterns already in place. Most approved endpoints are delivered within 3–4 weeks.
+FAQs
+What is the Playground API?
+What can I do with the Playground API?
+Who is the Playground API for?
+Do I need a developer to use the Playground API?
+What data can I access through the Playground API?
+How do I get started with the Playground API?
+What is the Playground MCP server?
+How is the Playground MCP different from the API?
+Explore related articles
+Browse all blogs
+Child Care Record Retention Guide: What to Store, How Long, and Why Paper Costs More
+7
+             min read
+Aug 11, 2026
+Operations
+What Is the Right NAICS Code for a Child Care or Daycare Business?
+4
+             min read
+May 28, 2026
+Operations
+How Much Does It Cost to Open a Child Care Business?
+15
+             min read
+Apr 27, 2026
+Operations
+The Ultimate Guide to Child Care Licensing Requirements in Massachusetts
+15
+             min read
+Apr 24, 2026
+Operations
+Why Playground is the best Child Care Management Software
+4
+             min read
+Apr 15, 2026
+Operations
+7 Childcare Trends Every Provider Needs to Know in 2026
+6
+             min read
+Feb 26, 2026
+Operations
+Best Arise Attendance App Alternative for Utah Child Care Providers
+3
+             min read
+Jan 14, 2026
+Operations
+Where to Buy Cheap Daycare Supplies in 2026 (Better Than Amazon & Sam’s Club)
+4
+             min read
+Sep 22, 2025
+Operations
+The True Cost of Under and Over-Enrolling — And How to Avoid Both
+2
+             min read
+Sep 8, 2025
+Operations
+Building a Culture of Continuous Improvement in ECE
+4
+             min read
+Jul 2, 2025
+Operations
+A Guide to Securing Daycare Centers
+5
+             min read
+Oct 29, 2024
+Operations
+Understanding Daycare Food Regulations and CACFP Standards
+6
+             min read
+Aug 17, 2024
+Operations
+Explore related articles
+Browse all blogs
+Child Care Record Retention Guide: What to Store, How Long, and Why Paper Costs More
+7
+             min read
+Aug 11, 2026
+Operations
+What Is the Right NAICS Code for a Child Care or Daycare Business?
+4
+             min read
+May 28, 2026
+Operations
+How Much Does It Cost to Open a Child Care Business?
+15
+             min read
+Apr 27, 2026
+Operations
+The Ultimate Guide to Child Care Licensing Requirements in Massachusetts
+15
+             min read
+Apr 24, 2026
+Operations
+Why Playground is the best Child Care Management Software
+4
+             min read
+Apr 15, 2026
+Operations
+7 Childcare Trends Every Provider Needs to Know in 2026
+6
+             min read
+Feb 26, 2026
+Operations
+Best Arise Attendance App Alternative for Utah Child Care Providers
+3
+             min read
+Jan 14, 2026
+Operations
+Where to Buy Cheap Daycare Supplies in 2026 (Better Than Amazon & Sam’s Club)
+4
+             min read
+Sep 22, 2025
+Operations
+The True Cost of Under and Over-Enrolling — And How to Avoid Both
+2
+             min read
+Sep 8, 2025
+Operations
+Building a Culture of Continuous Improvement in ECE
+4
+             min read
+Jul 2, 2025
+Operations
+A Guide to Securing Daycare Centers
+5
+             min read
+Oct 29, 2024
+Operations
+Understanding Daycare Food Regulations and CACFP Standards
+6
+             min read
+Aug 17, 2024
+Operations
+Ready to build on Playground?
+First, tell us about yourself. What type of program do you run?
+Home-Based
+Center
+Multi-Location
+Great! What's the best way we can contact you?
+🇺🇸
++
+1
+Select a state...
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Colorado
+Connecticut
+Delaware
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+Nevada
+New Hampshire
+New Jersey
+New Mexico
+New York
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Vermont
+Virginia
+Washington
+West Virginia
+Wisconsin
+Wyoming
+By requesting a demo, you agree to receive automated text messages from Playground. We’ll handle your info according to our
+privacy statement
+.
+Submit
+Ready to build on Playground?
+First, tell us about yourself. What type of program do you run?
+Home-Based
+Center
+Multi-Location
+Great! What's the best way we can contact you?
+🇺🇸
++
+1
+Select a state...
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Colorado
+Connecticut
+Delaware
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+Nevada
+New Hampshire
+New Jersey
+New Mexico
+New York
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Vermont
+Virginia
+Washington
+West Virginia
+Wisconsin
+Wyoming
+By requesting a demo, you agree to receive automated text messages from Playground. We’ll handle your info according to our
+privacy statement
+.
+Submit
+Ready to build on Playground?
+Home-Based
+Center
+Multi-Location
+First, tell us about yourself. What type of program do you run?
+🇺🇸
++
+1
+Select a state...
+Alabama
+Alaska
+Arizona
+Arkansas
+California
+Colorado
+Connecticut
+Delaware
+Florida
+Georgia
+Hawaii
+Idaho
+Illinois
+Indiana
+Iowa
+Kansas
+Kentucky
+Louisiana
+Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota
+Mississippi
+Missouri
+Montana
+Nebraska
+Nevada
+New Hampshire
+New Jersey
+New Mexico
+New York
+North Carolina
+North Dakota
+Ohio
+Oklahoma
+Oregon
+Pennsylvania
+Rhode Island
+South Carolina
+South Dakota
+Tennessee
+Texas
+Utah
+Vermont
+Virginia
+Washington
+West Virginia
+Wisconsin
+Wyoming
+By requesting a demo, you agree to receive automated text messages from Playground. We’ll handle your info according to our
+privacy statement
+.
+Submit
+Great! What's the best way we can contact you?
+Request AI summary of Playground
+Solutions
+Billing
+Expense
+s
+Payroll
+Subsidies
+Marketing
+Enrollment
+Websites
+Paperwork
+Branded Experience
+Predictive Enrollment
+A
+I
+Attendance
+Communication
+Food programs
+Learning
+Reporting
+API
+Integrations
+Built for
+Centers
+Multi-site
+In-home
+Head Start
+Shared Services
+Before & After Care
+Camps
+Company
+About
+Careers
+hiring!
+Security
+Resources
+Blog
+Why Playground
+Savings Club
+New!
+Early Childhood Investigations
+Customer Stories
+Help Center
+Changelog
+New!
+Log In
+Family Sign Up
+Download
+Apple Store
+Google Play
+© 2026 Carline Inc. All rights reserved.
+Privacy
+Terms of Service
+HIPAA Notice of Privacy Practices
+Sitemap
+Request AI summary of Playground
+Solutions
+Billing
+Expense
+s
+Payroll
+Subsidies
+Marketing
+Enrollment
+Websites
+Paperwork
+Branded Experience
+Predictive Enrollment
+A
+I
+Attendance
+Communication
+Food programs
+Learning
+Reporting
+API
+Integrations
+Resources
+Blog
+Why Playground
+Savings Club
+New!
+Early Childhood Investigations
+Customer Stories
+Help Center
+Changelog
+New!
+Log In
+Family Sign Up
+Download
+Apple Store
+Google Play
+Built for
+Centers
+Multi-site
+In-home
+Head Start
+Shared Services
+Before & After Care
+Camps
+Company
+About
+Careers
+hiring!
+Security
+© 2026 Carline Inc. All rights reserved.
+Privacy
+Terms of Service
+HIPAA Notice of Privacy Practices
+Sitemap
+Request AI summary of Playground
+Solutions
+Billing
+Expense
+s
+Payroll
+Subsidies
+Marketing
+Enrollment
+Websites
+Paperwork
+Branded Experience
+Predictive Enrollment
+A
+I
+Attendance
+Communication
+Food programs
+Learning
+Reporting
+API
+Integrations
+Built for
+Centers
+Multi-site
+In-home
+Head Start
+Shared Services
+Before & After Care
+Camps
+Company
+About
+Careers
+hiring!
+Security
+Downloads
+Apple Store
+Google Play
+Resources
+Blog
+Why Playground
+Savings Club
+New!
+Early Childhood Investigations
+Customer Stories
+Help Center
+Changelog
+New!
+Log In
+Family Sign Up
+© 2026 Carline Inc. All rights reserved.
+Privacy
+Terms of Service
+HIPAA Notice of Privacy Practices
+Sitemap
+
+LINKS
+../
+../about
+../blog
+../blog/7-childcare-trends-every-provider-needs-to-know-in-2026
+../blog/best-arise-attendance-app-alternative-for-utah-child-care-providers
+../blog/cheap-daycare-supplies-2026
+../blog/child-care-licensing-requirements-massachusetts
+../blog/continuous-improvement-in-ece
+../blog/cost-open-child-care-business
+../blog/daycare-food-regulations-cacfp-standards
+../blog/naics-code-child-care-daycare
+../blog/paperwork-records-retention-child-care
+../blog/securing-daycare-centers
+../blog/the-true-cost-of-under-and-over-enrolling-and-how-to-avoid-both
+../blog/why-playground-is-the-best-child-care-management-software
+../careers
+../changelog
+../customers
+../demo
+../early-childhood-webinars
+../for
+../for/before-and-after-care
+../for/camps
+../for/centers
+../for/head-start
+../for/home-based
+../for/multi-site
+../for/shared-services
+../hipaa
+../integrations
+../privacy
+../resources
+../savings-club
+../security-and-privacy
+../sitemap
+../solutions
+../terms
+../why-playground
+./ai
+./api
+./attendance
+./billing
+./branded-app
+./communication
+./enrollment
+./expenses
+./food-program
+./learning
+./marketing
+./paperwork
+./payroll
+./predictive-enrollment
+./reporting
+./subsidy
+./websites
+https://app.tryplayground.com/
+https://apps.apple.com/us/app/playground-school-management/id1486661197
+https://chatgpt.com/?q=Explain%20what%20it%27s%20actually%20like%20to%20use%20Playground%20(tryplayground.com)%20as%20a%20child%20care%20administrator.%20Walk%20through%20what%20happens%20after%20setup%2C%20what%20I%20do%20day%20to%20day%2C%20what%20I%20can%20see%20in%20the%20product%20(such%20as%20dashboards%20or%20reports)%2C%20and%20what%20Playground%20handles%20automatically%20in%20the%20background.%20Focus%20on%20practical%20outcomes%20across%20marketing%20and%20growth%2C%20billing%20and%20operations%2C%20and%20compliance%2C%20and%20be%20explicit%20about%20how%20those%20outcomes%20are%20achieved.%20Describe%20the%20real%2C%20day-to-day%20experience%20of%20using%20the%20service%20simply%20and%20clearly .
+https://claude.ai/new?q=Explain%20what%20it%27s%20actually%20like%20to%20use%20Playground%20(tryplayground.com)%20as%20a%20child%20care%20administrator.%20Walk%20through%20what%20happens%20after%20setup%2C%20what%20I%20do%20day%20to%20day%2C%20what%20I%20can%20see%20in%20the%20product%20(such%20as%20dashboards%20or%20reports)%2C%20and%20what%20Playground%20handles%20automatically%20in%20the%20background.%20Focus%20on%20practical%20outcomes%20across%20marketing%20and%20growth%2C%20billing%20and%20operations%2C%20and%20compliance%2C%20and%20be%20explicit%20about%20how%20those%20outcomes%20are%20achieved.%20Describe%20the%20real%2C%20day-to-day%20experience%20of%20using%20the%20service%20simply%20and%20clearly .
+https://help.tryplayground.com/en/
+https://help.tryplayground.com/en/articles/5091730-sign-up-for-playground-as-a-guardian
+https://play.google.com/store/apps/details?id=com.afterschooldevelopment.carline&hl=en_US&gl=US&pli=1
+https://www.perplexity.ai/search?q=Explain%20what%20it%27s%20actually%20like%20to%20use%20Playground%20(tryplayground.com)%20as%20a%20child%20care%20administrator.%20Walk%20through%20what%20happens%20after%20setup%2C%20what%20I%20do%20day%20to%20day%2C%20what%20I%20can%20see%20in%20the%20product%20(such%20as%20dashboards%20or%20reports)%2C%20and%20what%20Playground%20handles%20automatically%20in%20the%20background.%20Focus%20on%20practical%20outcomes%20across%20marketing%20and%20growth%2C%20billing%20and%20operations%2C%20and%20compliance%2C%20and%20be%20explicit%20about%20how%20those%20outcomes%20are%20achieved.%20Describe%20the%20real%2C%20day-to-day%20experience%20of%20using%20the%20service%20simply%20and%20clearly .
+tel:6465668590

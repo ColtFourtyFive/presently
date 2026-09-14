@@ -1,0 +1,114 @@
+URL: https://help.famly.co/en-us/articles/4912356-in-case-of-emergency
+
+In Case of Emergency | Famly Help Center
+Skip to main content
+Dansk
+English
+English (United States)
+Deutsch
+Norsk
+English (United States)
+Dansk
+English
+English (United States)
+Deutsch
+Norsk
+English (United States)
+Search for articles...
+All Collections
+The Famly Platform
+Children and Daily Care
+Health and Safety
+In Case of Emergency
+In Case of Emergency
+Written by
+Josie
+March 2, 2026
+Table of contents
+Emergencies can happen at any time, so it’s important to have clear procedures in place. This guide explains how to use Famly to support your evacuation process, keep track of children and staff, and communicate effectively with parents. Following these steps helps ensure everyone stays safe and accounted for.
+Assign a designated person
+As part of your evacuation procedure, we recommend assigning a specific staff member to:
+Bring a tablet with the app
+Have access to a charged mobile phone
+Communicate with parents during the incident
+Having one clear point of responsibility helps avoid confusion in urgent situations.
+Internet Access Outside the Building
+Because
+Famly
+is cloud-based, you need an internet connection to access your data during an evacuation. If your tablets do not have built-in mobile data, there are a few practical options:
+Install the app on a mobile phone with data so it can be accessed directly if needed. This is usually best suited to a manager or office-based staff member rather than practitioners on the floor
+Use a mobile phone hotspot to tether your tablet to a data connection. Make sure the tablet has connected to that hotspot at least once beforehand, so the network is saved
+Ensure designated devices are fully charged, and consider keeping a backup device available
+Finding Your Evacuation List
+You can quickly see who is signed in by using either of the following methods.
+Option 1: Use the Evacuation List report
+Go to
+Reports
+and select
+Custom Lists
+Open the preset list
+Evacuation List
+This shows all children currently signed in. You can customise the list to include additional details such as parent contact information. The data updates live as long as you are online. You can also create a similar list for staff.
+Option 2: Use the live overview
+Log in and go to
+Home → Overview
+Open the
+All Rooms
+tab
+Click the green tick icon beneath the graph
+This shows all staff and children currently signed in.
+💡
+We recommend practising how to access this information during evacuation drills so staff know exactly where to find it in an emergency.
+Contacting Parents During an Emergency
+Once everyone is accounted for, you can notify parents directly through the app. Clear communication is important, but messages should remain calm and factual.
+To message only parents with children currently signed in:
+Go to
+Home → Overview
+Open the
+All Rooms
+tab
+Click the green tick icon to show signed-in children
+Select
+Select all children
+Click
+Send
+Choose
+Post
+and write your message
+This ensures you contact only the relevant families.
+If Devices are Lost During an Evacuation
+Do not worry about the data on your tablets. All information in Famly is stored securely in the cloud, meaning it can be accessed from another device once you are back online.
+Related Articles
+Classroom Planner
+Create a Custom List
+Leaving Famly
+KinderConnect Integration
+Did this answer your question?
+Disappointed Reaction
+😞
+Neutral Reaction
+😐
+Smiley Reaction
+😃
+Table of contents
+
+LINKS
+#h_19347e2ef0
+#h_41170b2b37
+#h_4574e2da59
+#h_b9bbc59078
+#h_bd5665cfd9
+#main-content
+/en-us/
+https://help.famly.co/en-us/articles/10057494-kinderconnect-integration
+https://help.famly.co/en-us/articles/4912140-classroom-planner
+https://help.famly.co/en-us/articles/4912329-create-a-custom-list
+https://help.famly.co/en-us/articles/5483842-leaving-famly
+https://help.famly.co/en-us/collections/18529532-the-famly-platform
+https://help.famly.co/en-us/collections/18529535-children-and-daily-care
+https://help.famly.co/en-us/collections/18529549-health-and-safety
+https://www.facebook.com/famlyhq/
+https://www.instagram.com/famlyhq
+https://www.linkedin.com/company/famly/
+https://www.twitter.com/famlyhq
+https://www.youtube.com/@Famly

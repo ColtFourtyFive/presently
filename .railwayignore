@@ -1,0 +1,12 @@
+.git/
+node_modules/
+dist/
+.env
+.env.*
+.data/
+tmp/
+research/
+output/
+test-results/
+playwright-report/
+LOCAL_ACCESS.md
