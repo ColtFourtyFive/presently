@@ -40,6 +40,8 @@ On September 14, 2026, `npm test` passed 23 tests across three files. The suite 
 
 Hosted checks confirmed PostgreSQL availability, rejection of anonymous student-data access, staff login with a Secure/HttpOnly session cookie, authenticated sample records, and a saved synthetic interaction that remained available after a new Railway deployment. Production dependency auditing reported zero vulnerabilities. Two moderate advisories remain in the development-only Vitest toolchain; a major-version upgrade remains separate work.
 
+A separate hosted browser pass verified all six workspace pages, mobile navigation and visible attendance actions, report controls, and logout. It found no browser runtime errors or unexpected business-record writes. Browser scripts, fonts, and other loaded resources came from the application's own origin. Screenshot evidence and machine-readable reports are stored locally under `tmp/browser` and `tmp/browser-hosted`, outside Git and deployment uploads.
+
 PostgreSQL remains the production database. Passing PGlite tests does not establish Railway availability, production load performance, browser offline durability, backup recoverability, or certification readiness.
 
 ## Railway preview
