@@ -1,3 +1,4 @@
+import { importSchemaStatements } from './import-schema.js';
 export const schemaStatements = [
 `CREATE TABLE IF NOT EXISTS centers (
  id TEXT PRIMARY KEY, name TEXT NOT NULL, timezone TEXT NOT NULL,
@@ -110,4 +111,11 @@ export const schemaStatements = [
 `CREATE INDEX IF NOT EXISTS events_center_time ON attendance_events(center_id,occurred_at DESC)`,
 `CREATE INDEX IF NOT EXISTS visits_center_time ON visits(center_id,checked_in_at DESC)`,
 `CREATE INDEX IF NOT EXISTS sessions_last_seen ON sessions(last_seen_at)`,
+`CREATE INDEX IF NOT EXISTS events_center_received ON attendance_events(center_id,received_at)`,
+`CREATE INDEX IF NOT EXISTS corrections_center_created ON attendance_corrections(center_id,created_at)`,
+`CREATE INDEX IF NOT EXISTS visits_center_closed ON visits(center_id,checked_out_at)`,
+`CREATE INDEX IF NOT EXISTS incidents_center_created ON incidents(center_id,created_at)`,
+`CREATE INDEX IF NOT EXISTS incidents_center_resolved ON incidents(center_id,resolved_at)`,
+`CREATE INDEX IF NOT EXISTS incidents_center_open ON incidents(center_id) WHERE status='open'`,
+...importSchemaStatements,
 ];

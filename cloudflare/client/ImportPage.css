@@ -1,0 +1,7 @@
+.cf-import-values { margin-top: 10px; max-width: 300px; font-size: 11px; }
+.cf-import-values summary { cursor: pointer; color: #3a7898; }
+.cf-import-values dl { margin: 12px 0; }
+.cf-import-values dl > div { margin-bottom: 10px; }
+.cf-import-values dt { font-weight: 600; color: #3d6277; }
+.cf-import-values dd { margin: 4px 0 0; overflow-wrap: anywhere; white-space: pre-wrap; color: #647d8b; }
+.cf-import-values p { font-size: 10px; }

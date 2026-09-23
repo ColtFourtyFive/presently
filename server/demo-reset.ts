@@ -7,6 +7,7 @@ import { DEMO_CENTER_LOCATION, DEMO_OPERATING_HOURS } from './seed.js';
 // limited to a center explicitly marked as a demo and requires that center's
 // active owner for attribution. Staff credentials and sessions are retained.
 const businessTables = [
+  'roster_import_rows', 'roster_imports',
   'attendance_corrections', 'attendance_events', 'incidents', 'interactions',
   'schedules', 'tasks', 'inquiry_stage_history', 'inquiries', 'visits',
   'enrollments', 'student_guardians', 'students', 'guardians', 'households',

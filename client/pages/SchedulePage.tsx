@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { CalendarDays, ChevronLeft, ChevronRight, Clock3, Plus, Repeat2, Users } from 'lucide-react';
 import type { PageProps, Schedule, Subject } from '../../shared/types';
 import { mutate } from '../api';
@@ -25,6 +25,15 @@ function layOutSlots(slots: Schedule[]) {
 export default function SchedulePage({ data, refresh, notify, onStudent }: PageProps) {
   const today = localDate(data.serverTime, data.center.timezone);
   const [offset, setOffset] = useState(0);
+  const [compact, setCompact] = useState(() => window.matchMedia('(max-width: 1366px), (any-pointer: coarse)').matches);
+  const [preferredView, setPreferredView] = useState<'week' | 'agenda' | null>(null);
+  const calendarView = preferredView || (compact ? 'agenda' : 'week');
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 1366px), (any-pointer: coarse)');
+    const update = () => setCompact(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
   const [subject, setSubject] = useState('all');
   const [adding, setAdding] = useState(false);
   const [selected, setSelected] = useState<Schedule | null>(null);
@@ -40,7 +49,9 @@ export default function SchedulePage({ data, refresh, notify, onStudent }: PageP
   const minimumHour = Math.min(12, ...slots.map(slot => Math.floor(timeMinutes(slot.startTime) / 60)));
   const maximumHour = Math.max(19, ...slots.map(slot => Math.ceil((timeMinutes(slot.startTime) + slot.durationMinutes) / 60)));
   const totalMinutes = (maximumHour - minimumHour) * 60;
-  const gridHeight = Math.max(560, (maximumHour - minimumHour) * 74);
+  const shortestSlot = Math.min(30, ...slots.map(slot => slot.durationMinutes));
+  const gridHeight = compact ? Math.max(560, totalMinutes * 48 / shortestSlot) : Math.max(560, (maximumHour - minimumHour) * 74);
+  const weekMinWidth = compact ? 64 + 7 * Math.max(112, ...week.map(date => layOutSlots(slots.filter(slot => slot.dayOfWeek === date.getUTCDay())).lanes * 60)) : undefined;
   const hours = Array.from({ length: maximumHour - minimumHour + 1 }, (_, index) => minimumHour + index);
   const weekLabel = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).formatRange(week[0], week[6]);
   const studentFor = (slot: Schedule) => data.students.find(student => student.id === slot.studentId);
@@ -62,8 +73,22 @@ export default function SchedulePage({ data, refresh, notify, onStudent }: PageP
   return <>
     <PageIntro eyebrow="CENTER CALENDAR" title="Make room for progress." description="Your students' recurring weekly lessons, at a glance." action={<button className="btn btn-primary" onClick={openAdd} disabled={!activeStudents.length}><Plus size={17} />Add lesson</button>} />
     <div className="schedule-overview"><div><CalendarDays size={19} /><strong>{data.schedules.filter(slot => slot.active).length}</strong><span>weekly lessons</span></div><div><Users size={19} /><strong>{new Set(data.schedules.filter(slot => slot.active).map(slot => slot.studentId)).size}</strong><span>students scheduled</span></div><div><Repeat2 size={18} /><span>Lessons repeat each week</span></div></div>
-    <section className="card calendar-card"><div className="calendar-toolbar"><div className="calendar-date-navigation"><button className="icon-button" aria-label="Previous week" onClick={() => setOffset(current => current - 1)}><ChevronLeft size={18} /></button><button className="icon-button" aria-label="Next week" onClick={() => setOffset(current => current + 1)}><ChevronRight size={18} /></button><h2>{weekLabel}</h2><button className="btn btn-secondary btn-sm" onClick={() => setOffset(0)}>This week</button></div><select aria-label="Filter lessons by subject" value={subject} onChange={event => setSubject(event.target.value)}><option value="all">All subjects</option><option>Math</option><option>Reading</option></select></div>
-      <div className="calendar-scroll"><div className="weekly-calendar"><div className="calendar-week-heading"><div className="calendar-timezone">{new Intl.DateTimeFormat('en-US', { timeZone: data.center.timezone, timeZoneName: 'short' }).formatToParts(new Date(data.serverTime)).find(part => part.type === 'timeZoneName')?.value}</div>{week.map(date => <div key={date.toISOString()} className={`calendar-day-heading ${date.toISOString().slice(0, 10) === today ? 'is-today' : ''}`}><span>{days[date.getUTCDay()].slice(0, 3)}</span><strong>{date.getUTCDate()}</strong></div>)}</div>
+    <section className={`card calendar-card calendar-view-${calendarView}`}><div className="calendar-toolbar"><div className="calendar-date-navigation"><button className="icon-button" aria-label="Previous week" onClick={() => setOffset(current => current - 1)}><ChevronLeft size={18} /></button><button className="icon-button" aria-label="Next week" onClick={() => setOffset(current => current + 1)}><ChevronRight size={18} /></button><h2>{weekLabel}</h2><button className="btn btn-secondary btn-sm" onClick={() => setOffset(0)}>This week</button></div><div className="calendar-view-controls"><div className="calendar-view-switch" role="group" aria-label="Calendar view"><button type="button" aria-pressed={calendarView === 'week'} onClick={() => setPreferredView('week')}>Week</button><button type="button" aria-pressed={calendarView === 'agenda'} onClick={() => setPreferredView('agenda')}>Agenda</button></div><select aria-label="Filter lessons by subject" value={subject} onChange={event => setSubject(event.target.value)}><option value="all">All subjects</option><option>Math</option><option>Reading</option></select></div></div>
+      <div className="calendar-agenda" aria-label="Weekly lesson agenda">{week.map(date => {
+        const daySlots = slots.filter(slot => slot.dayOfWeek === date.getUTCDay()).sort((a, b) => a.startTime.localeCompare(b.startTime));
+        const dayLabel = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'short', day: 'numeric', timeZone: 'UTC' }).format(date);
+        return <section className={`agenda-day ${date.toISOString().slice(0, 10) === today ? 'is-today' : ''}`} key={date.toISOString()}>
+          <h3>{dayLabel}<span>{daySlots.length} {daySlots.length === 1 ? 'lesson' : 'lessons'}</span></h3>
+          {daySlots.length ? daySlots.map(slot => {
+            const student = studentFor(slot);
+            return <button type="button" className="agenda-lesson" key={slot.id} onClick={() => setSelected(slot)}>
+              <time dateTime={slot.startTime}>{formatSlotTime(slot.startTime)}</time>
+              <span><strong>{student ? fullName(student) : 'Student'}</strong><small>{slot.subject} · {slot.durationMinutes} min</small></span>
+            </button>;
+          }) : <p>No lessons scheduled.</p>}
+        </section>;
+      })}</div>
+      <div className="calendar-scroll"><div className="weekly-calendar" style={{ minWidth: weekMinWidth }}><div className="calendar-week-heading"><div className="calendar-timezone">{new Intl.DateTimeFormat('en-US', { timeZone: data.center.timezone, timeZoneName: 'short' }).formatToParts(new Date(data.serverTime)).find(part => part.type === 'timeZoneName')?.value}</div>{week.map(date => <div key={date.toISOString()} className={`calendar-day-heading ${date.toISOString().slice(0, 10) === today ? 'is-today' : ''}`}><span>{days[date.getUTCDay()].slice(0, 3)}</span><strong>{date.getUTCDate()}</strong></div>)}</div>
         <div className="calendar-body" style={{ height: gridHeight }}><div className="calendar-times">{hours.map(hour => <span key={hour} style={{ top: `${((hour - minimumHour) * 60 / totalMinutes) * 100}%` }}>{hour % 12 || 12} {hour >= 12 ? 'PM' : 'AM'}</span>)}</div>{week.map(date => {
           const { arranged, lanes } = layOutSlots(slots.filter(slot => slot.dayOfWeek === date.getUTCDay()));
           return <div className={`calendar-day ${date.toISOString().slice(0, 10) === today ? 'is-today' : ''}`} key={date.toISOString()}>{hours.map(hour => <div className="calendar-hour-line" key={hour} style={{ top: `${((hour - minimumHour) * 60 / totalMinutes) * 100}%` }} />)}{arranged.map(({ slot, lane }) => {

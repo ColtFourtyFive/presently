@@ -1,0 +1,87 @@
+:root {
+  --kumon-sky: #6dcff6;
+  --kumon-pale: #eaf8fe;
+  --kumon-action: #00658b;
+  --kumon-action-hover: #004e70;
+  --blue: var(--kumon-action);
+}
+
+.kumon-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+}
+.kumon-brand img { display: block; width: 151px; height: auto; }
+.kumon-brand > span {
+  color: #526778;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+.sidebar .brand { margin-bottom: 29px; }
+.sidebar { border-top: 4px solid var(--kumon-sky); overflow-y: auto; overflow-x: hidden; }
+.brand-light .kumon-brand img { width: 182px; }
+.brand-light .kumon-brand > span { color: #234d60; }
+.kumon-brand-mobile { display: none; }
+.app-loading .kumon-brand { align-items: center; margin-bottom: 16px; }
+
+.btn-primary {
+  background: var(--kumon-action);
+  border-color: var(--kumon-action);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--kumon-action-hover);
+  border-color: var(--kumon-action-hover);
+}
+.nav-item.active { background: var(--kumon-pale); color: #00577e; }
+.nav-active-dot { background: var(--kumon-action); }
+.nav-count { background: #d7f1fc; color: #00577e; }
+.tab.active { color: #005d85; border-bottom-color: var(--kumon-action); }
+.text-button { color: var(--kumon-action); }
+.center-icon, .setup-icon { color: var(--kumon-action); }
+.setup-card { background: #f1faff; border-color: #d5edf8; }
+.setup-card h3 { color: #284858; }
+.setup-card button { color: var(--kumon-action); }
+.empty-workspace-hero { background: linear-gradient(112deg, #fff 45%, #eaf8fe); }
+.empty-workspace-label { color: #426c80; }
+.empty-workspace-book { background: #def4fd; border-color: #bfe9fa; color: #277e9e; }
+.empty-workspace-orbit { border-color: #b4deed; }
+.empty-workspace-card-icon { background: #eaf8fe; color: #277e9e; }
+
+.login-story { background: var(--kumon-sky); color: #152f3e; }
+.login-story::before, .login-story::after { display: none; }
+.login-kicker { color: #224c60; }
+.login-story h1 { color: #152f3e; }
+.login-story-content > p { color: #244e62; }
+.login-story-footer { color: #285166; }
+.login-capabilities { background: #ffffff38; border-color: #ffffff6b; }
+.login-capabilities-title { color: #2d5669; }
+.login-capability > span { background: #ffffff52; border-color: #ffffff80; color: #145372; }
+.login-capability strong { color: #193d50; }
+.login-capability p { color: #31586b; }
+.login-form-wrap .eyebrow { color: #00658b; }
+.login-form-wrap h2 { color: #1c3443; }
+.login-form-wrap > p { color: #627b8a; }
+.login-form-wrap label { color: #3e5b6e; }
+.login-security { color: #526b7b; }
+.login-help { color: #627888 !important; }
+button:focus-visible, a:focus-visible { outline-color: #007aab; }
+input:focus, select:focus, textarea:focus {
+  border-color: #007aab !important;
+  box-shadow: 0 0 0 3px #6dcff633;
+}
+::selection { background: #b9eaff; color: #173c50; }
+
+@media (max-width: 600px) {
+  .login-form-panel { border-top: 6px solid var(--kumon-sky); padding-top: 36px; }
+  .kumon-brand-mobile { display: inline-flex; margin-bottom: 38px; }
+  .kumon-brand-mobile img { width: 168px; }
+}
+
+@media (max-height: 800px) {
+  .sidebar .setup-card { display: none; }
+}

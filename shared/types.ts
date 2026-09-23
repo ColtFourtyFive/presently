@@ -1,6 +1,6 @@
 export type Subject = 'Math' | 'Reading';
 export type Role = 'owner' | 'manager' | 'front_desk' | 'instructor';
-export type Page = 'today' | 'students' | 'inquiries' | 'schedule' | 'reports' | 'settings';
+export type Page = 'today' | 'students' | 'imports' | 'inquiries' | 'schedule' | 'reports' | 'settings';
 export interface Staff { id: string; name: string; email: string; role: Role }
 export interface Center { id: string; name: string; timezone: string; location: string; operatingHours: string }
 export interface Guardian { id: string; name: string; relationship: string; email: string; phone: string; canPickup: boolean }
@@ -16,6 +16,7 @@ export interface Incident { id: string; studentId: string; visitId: string | nul
 export interface AuditEntry { id: string; actorName: string; action: string; entityId: string; detail: string; createdAt: string }
 export interface Interaction { id: string; studentId: string; channel: 'Phone' | 'Email' | 'Meeting' | 'Other'; summary: string; actorName: string; occurredAt: string }
 export interface Bootstrap { center: Center; user: Staff; students: Student[]; schedules: Schedule[]; visits: Visit[]; events: AttendanceEvent[]; corrections?: AttendanceCorrection[]; inquiries: Inquiry[]; tasks: Task[]; incidents: Incident[]; audit: AuditEntry[]; interactions: Interaction[]; serverTime: string; demo: boolean }
+export interface LiveAttendance { centerId: string; user: Staff; from: string; serverTime: string; complete: boolean; visits: Visit[]; events: AttendanceEvent[]; incidents: Incident[]; corrections: AttendanceCorrection[] }
 export interface StudentInput { firstName: string; lastName: string; grade: string; subjects: Subject[]; guardianName: string; guardianEmail: string; guardianPhone: string; pickupAlert?: string }
 export interface InquiryInput { contactName: string; studentName: string; email: string; phone: string; subjects: Subject[]; source: string; nextAction: string; dueAt?: string; notes?: string }
 export interface AttendanceInput { eventId: string; studentId: string; action: AttendanceEvent['action']; guardianId?: string; reason?: string }

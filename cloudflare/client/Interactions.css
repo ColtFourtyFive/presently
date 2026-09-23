@@ -1,0 +1,12 @@
+.cf-interactions { border-top: 1px solid var(--border, #e6e9ef); padding-top: 20px; margin-top: 8px; }
+.cf-interaction-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cf-interaction-heading h4 { margin: 0; }
+.cf-interaction-help { font-size: 12px; line-height: 1.6; color: var(--text-secondary, #667085); }
+.cf-interaction-list { display: grid; gap: 10px; margin: 16px 0; }
+.cf-interaction-list article { padding: 14px; border: 1px solid var(--border, #e6e9ef); border-radius: 10px; }
+.cf-interaction-list article > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 13px; }
+.cf-interaction-list time, .cf-interaction-list small { color: var(--text-secondary, #667085); font-size: 11px; }
+.cf-interaction-list p { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; line-height: 1.6; margin: 10px 0; }
+.cf-interaction-form { display: grid; gap: 12px; margin-top: 18px; }
+.cf-interaction-form > button { justify-self: end; }
+.cf-interaction-form .cf-interaction-help { margin: 0; }

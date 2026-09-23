@@ -1,0 +1,11 @@
+.cf-directory-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
+.cf-directory-metrics > div { display: flex; gap: 16px; align-items: center; padding: 24px; color: #55778a; }
+.cf-directory-metrics span { font-size: 12px; }
+.cf-directory-metrics strong { display: block; color: #233e50; font-size: 28px; margin-top: 5px; }
+.cf-directory-filters { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; padding: 0 25px 22px; }
+.cf-directory-filters .cf-search { flex: 1 1 300px; width: auto; }
+.cf-directory-filters .field { min-width: 170px; }
+.cf-directory-contact { display: flex; flex-direction: column; gap: 5px; max-width: 230px; white-space: normal; overflow-wrap: anywhere; }
+.cf-directory-contact small { color: #667c88; }
+.cf-directory-table th, .cf-directory-table td { padding-left: 18px; padding-right: 18px; }
+@media (max-width: 640px) { .cf-directory-metrics { grid-template-columns: 1fr; gap: 10px; } .cf-directory-metrics > div { padding: 16px; } .cf-directory-metrics span { display: flex; align-items: center; justify-content: space-between; flex: 1; } .cf-directory-metrics strong { margin: 0; } .cf-directory-filters { padding: 0 16px 18px; } .cf-directory-filters .field { flex: 1 1 100%; } }

@@ -1,5 +1,5 @@
 import { useMemo, useState, type FormEvent } from 'react';
-import { ArrowUpRight, BookOpen, GraduationCap, Plus, Search, Users } from 'lucide-react';
+import { ArrowUpRight, BookOpen, GraduationCap, Plus, Search, Users, FileUp } from 'lucide-react';
 import type { PageProps, StudentInput, Subject } from '../../shared/types';
 import { mutate } from '../api';
 import { Avatar, Badge, EmptyState, Modal, SubjectTags } from '../components';
@@ -8,7 +8,7 @@ import { Field, Metric, PageIntro, SubjectChoice } from './page-components';
 
 const blankStudent: StudentInput = { firstName: '', lastName: '', grade: '', subjects: ['Math'], guardianName: '', guardianEmail: '', guardianPhone: '', pickupAlert: '' };
 
-export default function StudentsPage({ data, refresh, notify, onStudent }: PageProps) {
+export default function StudentsPage({ data, refresh, notify, onStudent, onImport }: PageProps & { onImport: () => void }) {
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState('active');
   const [subject, setSubject] = useState('all');
@@ -31,8 +31,8 @@ export default function StudentsPage({ data, refresh, notify, onStudent }: PageP
   const update = (key: keyof StudentInput, value: string) => setForm(current => ({ ...current, [key]: value }));
 
   return <>
-    <PageIntro eyebrow="STUDENT DIRECTORY" title="Every student. One place." description="Keep families, subjects, and the details that matter connected." action={<button className="btn btn-primary" onClick={() => setAdding(true)}><Plus size={17} />Add student</button>} />
-    <div className="page-metrics three">
+    <PageIntro eyebrow="STUDENT DIRECTORY" title="Every student. One place." description="Keep families, subjects, and the details that matter connected." action={<>{['owner', 'manager'].includes(data.user.role) && <button className="btn btn-secondary" onClick={onImport}><FileUp size={17} />Import roster</button>}<button className="btn btn-primary" onClick={() => setAdding(true)}><Plus size={17} />Add student</button></>} />
+    <div className="page-metrics three student-metrics">
       <Metric label="Active students" value={active.length} detail="Currently enrolled at your center" icon={Users} />
       <Metric label="Math enrollments" value={active.filter(student => student.subjects.includes('Math')).length} detail="Active students studying math" icon={GraduationCap} tone="purple" />
       <Metric label="Reading enrollments" value={active.filter(student => student.subjects.includes('Reading')).length} detail="Active students studying reading" icon={BookOpen} tone="green" />
@@ -43,11 +43,11 @@ export default function StudentsPage({ data, refresh, notify, onStudent }: PageP
         <div className="search-input"><Search size={17} /><input aria-label="Search students" placeholder="Search students or guardians..." value={query} onChange={event => setQuery(event.target.value)} /></div>
         <div className="filter-group"><select aria-label="Filter by subject" value={subject} onChange={event => setSubject(event.target.value)}><option value="all">All subjects</option><option>Math</option><option>Reading</option></select><select aria-label="Filter by status" value={status} onChange={event => setStatus(event.target.value)}><option value="active">Active students</option><option value="inactive">Inactive students</option><option value="all">All statuses</option></select></div>
       </div>
-      {students.length ? <div className="table-wrap"><table className="data-table student-table"><thead><tr><th>Student</th><th>Subjects</th><th>Grade</th><th>Primary contact</th><th>Status</th><th><span className="sr-only">Open profile</span></th></tr></thead><tbody>{students.map(student => <tr key={student.id}>
-        <td><button className="student-name-button" onClick={() => onStudent(student)}><Avatar name={fullName(student)} /><span><strong>{fullName(student)}</strong><small>{student.studentNumber}</small></span></button></td>
-        <td><SubjectTags subjects={student.subjects} /></td><td><span className="muted">{student.grade || 'Not recorded'}</span></td>
-        <td><span className="table-text-stack"><strong>{student.guardians[0]?.name || 'No guardian recorded'}</strong><small>{student.guardians[0]?.phone || student.guardians[0]?.email || 'Add contact details'}</small></span></td>
-        <td><Badge tone={student.status === 'active' ? 'green' : 'gray'}>{student.status === 'active' ? 'Active' : 'Inactive'}</Badge></td>
+      {students.length ? <div className="table-wrap"><table className="data-table student-table" role="table"><thead><tr><th>Student</th><th>Subjects</th><th>Grade</th><th>Primary contact</th><th>Status</th><th><span className="sr-only">Open profile</span></th></tr></thead><tbody>{students.map(student => <tr key={student.id}>
+        <td data-label="Student"><button className="student-name-button" onClick={() => onStudent(student)}><Avatar name={fullName(student)} /><span><strong>{fullName(student)}</strong><small>{student.studentNumber}</small></span></button></td>
+        <td data-label="Subjects"><SubjectTags subjects={student.subjects} /></td><td data-label="Grade"><span className="muted">{student.grade || 'Not recorded'}</span></td>
+        <td data-label="Primary contact"><span className="table-text-stack"><strong>{student.guardians[0]?.name || 'No guardian recorded'}</strong><small>{student.guardians[0]?.phone || student.guardians[0]?.email || 'Add contact details'}</small></span></td>
+        <td data-label="Status"><Badge tone={student.status === 'active' ? 'green' : 'gray'}>{student.status === 'active' ? 'Active' : 'Inactive'}</Badge></td>
         <td><button className="icon-button" title={`Open ${fullName(student)}'s profile`} onClick={() => onStudent(student)}><ArrowUpRight size={18} /></button></td>
       </tr>)}</tbody></table></div> : <EmptyState icon={Users} title="No students found" description={query || subject !== 'all' ? 'Try another name or change your filters.' : 'Add your first student to start building your center directory.'} action={<button className="btn btn-secondary" onClick={() => setAdding(true)}><Plus size={16} />Add student</button>} />}
       <div className="table-footer">{students.length} {students.length === 1 ? 'student' : 'students'} shown<span>Subject totals count enrollments, so a student may appear in both.</span></div>

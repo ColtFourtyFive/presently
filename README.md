@@ -2,9 +2,11 @@
 
 An in-house CRM for one Kumon center, built with React, TypeScript, Express, and PostgreSQL. This first build covers student and guardian records, inquiries, recurring schedules, staff attendance, follow-up tasks, and attendance history.
 
-The application is hosted at [web-production-ce255.up.railway.app](https://web-production-ce255.up.railway.app) in the [Kumon CRM Railway project](https://railway.com/project/83fb1c4c-5246-4250-8e00-a4fc4053c5ff). The `web` service connects to the project's `Postgres` service. Sign-in credentials are in the private, Git-ignored `LOCAL_ACCESS.md` file. The workspace starts empty, with demo seeding disabled. See the [onboarding proposal](docs/onboarding-proposal.md) for the next setup flow.
+The Railway edition uses PostgreSQL. A separate [Cloudflare edition](cloudflare/README.md) uses Workers, D1, and R2. Sign-in credentials belong in private, Git-ignored configuration. New workspaces start empty, with demo seeding disabled. See the [onboarding proposal](docs/onboarding-proposal.md) for the next setup flow.
 
 The requirements remain in `research/BRD.md`, `research/FRD.md`, and `research/FDR.md`. The application implements a subset of that proposed first release. See [implementation status](docs/implementation-status.md) for the remaining work before operational use.
+
+The public repository excludes installation-specific configuration and private acceptance evidence. Copy `cloudflare/wrangler.example.jsonc` to `cloudflare/wrangler.jsonc` and supply your own resource identifiers for a Cloudflare installation. Historical handover-package checks require the separately held acceptance records.
 
 ## Run locally
 

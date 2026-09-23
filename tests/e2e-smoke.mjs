@@ -75,8 +75,33 @@ try {
   report.checks.push('Named staff login');
   const initial = await bootstrap();
   assert(initial.demo, 'Browser smoke requires a fictional demo database.');
-  await page.waitForRequest(request => new URL(request.url()).pathname === '/api/bootstrap' && request.headers()['x-background-request'] === '1');
-  report.checks.push('Background roster polling identifies itself without extending staff activity');
+  await page.waitForRequest(request => new URL(request.url()).pathname === '/api/attendance/live' && request.headers()['x-background-request'] === '1');
+  report.checks.push('Narrow attendance polling identifies itself without extending staff activity');
+  const automaticReads = [];
+  const recordRead = request => { const url = new URL(request.url()); if (['/api/bootstrap', '/api/attendance/live'].includes(url.pathname)) automaticReads.push(url.pathname); };
+  page.on('request', recordRead);
+  await page.waitForRequest(request => new URL(request.url()).pathname === '/api/attendance/live');
+  assert(!automaticReads.includes('/api/bootstrap'), 'A routine attendance poll downloaded the full workspace.');
+  await page.evaluate(() => { Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' }); document.dispatchEvent(new Event('visibilitychange')); });
+  const hiddenReads = automaticReads.length;
+  await page.waitForTimeout(6000);
+  assert.equal(automaticReads.length, hiddenReads, 'The hidden workspace continued polling.');
+  const resumed = page.waitForRequest(request => new URL(request.url()).pathname === '/api/attendance/live');
+  await page.evaluate(() => { delete document.visibilityState; document.dispatchEvent(new Event('visibilitychange')); });
+  await resumed;
+  let releasePoll;
+  let heldReads = 0;
+  const holdPoll = new Promise(resolve => { releasePoll = resolve; });
+  await page.route('**/api/attendance/live', async route => { heldReads++; await holdPoll; await route.continue(); });
+  try {
+    await page.waitForRequest(request => new URL(request.url()).pathname === '/api/attendance/live');
+    await page.waitForTimeout(6000);
+    assert.equal(heldReads, 1, 'Attendance polls overlapped while an earlier response was pending.');
+    await expect(page.locator('.offline-banner')).toBeVisible({ timeout: 12000 });
+  } finally { releasePoll(); await page.unrouteAll({ behavior: 'wait' }); }
+  await expect(page.locator('.offline-banner')).toBeHidden({ timeout: 10000 });
+  page.off('request', recordRead);
+  report.checks.push('Attendance refresh pauses while hidden, resumes immediately, prevents overlapping reads, and recovers after a timeout');
   await screenshot('02-overview-desktop');
 
   await page.setViewportSize({ width: 390, height: 844 });

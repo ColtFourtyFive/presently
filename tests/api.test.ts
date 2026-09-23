@@ -6,7 +6,7 @@ import { createApp } from '../server/app.js';
 import { createDatabase, type Database } from '../server/db.js';
 import { initializeDatabase } from '../server/seed.js';
 import { tokenHash } from '../server/auth.js';
-import type { Bootstrap, Student } from '../shared/types.js';
+import type { Bootstrap, LiveAttendance, Student } from '../shared/types.js';
 
 // These credentials exist only in this ephemeral test database.
 const password = `Test-only-${randomUUID()}!`;
@@ -108,6 +108,7 @@ afterAll(async () => {
 describe('authentication and center scope', () => {
   it('requires a named staff session and rejects an incorrect password', async () => {
     expect((await request('/bootstrap', { cookie: null })).status).toBe(401);
+    expect((await request('/attendance/live', { cookie: null })).status).toBe(401);
     const invalid = await request('/auth/login', { cookie: null, body: { email: ownerEmail, password: 'incorrect' } });
     expect(invalid.status).toBe(401);
   });
@@ -134,13 +135,16 @@ describe('authentication and center scope', () => {
     const hash = tokenHash(cookie.slice(cookie.indexOf('=') + 1));
     const inactiveSince = new Date(Date.now() - 10 * 60_000).toISOString();
     await db.query('UPDATE sessions SET last_seen_at=$1 WHERE token_hash=$2', [inactiveSince, hash]);
-    const background = await request('/bootstrap', { cookie, headers: { 'X-Background-Request': '1' } });
+    const background = await request('/attendance/live', { cookie, headers: { 'X-Background-Request': '1' } });
     expect(background.status).toBe(200);
+    expect(background.headers.get('set-cookie')).toBeNull();
     let session = await db.query('SELECT last_seen_at FROM sessions WHERE token_hash=$1', [hash]);
     expect(new Date(session.rows[0].last_seen_at).toISOString()).toBe(inactiveSince);
     expect((await request('/bootstrap', { cookie })).status).toBe(200);
     session = await db.query('SELECT last_seen_at FROM sessions WHERE token_hash=$1', [hash]);
     expect(new Date(session.rows[0].last_seen_at).getTime()).toBeGreaterThan(Date.parse(inactiveSince));
+    await db.query("UPDATE sessions SET last_seen_at=NOW()-INTERVAL '16 minutes' WHERE token_hash=$1", [hash]);
+    expect((await request('/attendance/live', { cookie, headers: { 'X-Background-Request': '1' } })).status).toBe(401);
   });
 
   it('blocks an existing session as soon as its staff member is deactivated', async () => {
@@ -172,6 +176,68 @@ describe('authentication and center scope', () => {
       guardianName: 'Test Guardian', guardianEmail: '', guardianPhone: '',
     } });
     expect(result.status).toBe(403);
+  });
+});
+
+describe('narrow attendance refresh', () => {
+  it('uses the center-local cutoff, preserves original facts, and returns recently corrected/resolved historical rows', async () => {
+    const child = await student();
+    const arrival = await attendance(child.id, 'check_in');
+    expect(arrival.status).toBeLessThan(300);
+    expect((await attendance(child.id, 'exceptional_departure', { reason: 'Observed departure for refresh test.' })).status).toBeLessThan(300);
+    const oldArrival = new Date(Date.now() - 3 * 86400000).toISOString();
+    const oldDeparture = new Date(Date.parse(oldArrival) + 3600000).toISOString();
+    await db.query('UPDATE visits SET checked_in_at=$1,checked_out_at=$2 WHERE student_id=$3', [oldArrival, oldDeparture, child.id]);
+    await db.query('UPDATE attendance_events SET occurred_at=$1,received_at=$1 WHERE student_id=$2', [oldArrival, child.id]);
+    await db.query('UPDATE incidents SET created_at=$1 WHERE student_id=$2', [oldArrival, child.id]);
+    const initial = await request<LiveAttendance>('/attendance/live');
+    expect(initial.status).toBe(200);
+    expect(initial.body.complete).toBe(true);
+    expect(initial.body.visits.some(row => row.studentId === child.id)).toBe(false);
+    expect(initial.body.events.some(row => row.studentId === child.id)).toBe(false);
+    const issue = initial.body.incidents.find(row => row.studentId === child.id)!;
+    expect(issue.status).toBe('open');
+    const timezone = (await bootstrap()).center.timezone;
+    const day = new Intl.DateTimeFormat('en-CA', { timeZone: timezone, year: 'numeric', month: '2-digit', day: '2-digit' });
+    expect(day.format(new Date(initial.body.from))).toBe(day.format(new Date(initial.body.serverTime)));
+    expect(new Intl.DateTimeFormat('en-GB', { timeZone: timezone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(initial.body.from))).toBe('00:00');
+    const correctedAt = new Date(Date.parse(oldArrival) - 600000).toISOString();
+    expect((await request(`/attendance/${arrival.body.event.id}/corrections`, { body: { occurredAt: correctedAt, reason: 'Correct historical arrival during refresh test.' } })).status).toBeLessThan(300);
+    expect((await request(`/incidents/${issue.id}/resolve`, { body: { reason: 'Reviewed the recorded departure.' } })).status).toBeLessThan(300);
+    const current = (await request<LiveAttendance>('/attendance/live')).body;
+    expect(current.visits.find(row => row.studentId === child.id)?.checkedInAt).toBe(correctedAt);
+    expect(current.visits.find(row => row.studentId === child.id)?.status).toBe('closed');
+    expect(current.events.find(row => row.id === arrival.body.event.id)?.occurredAt).toBe(oldArrival);
+    expect(current.corrections.some(row => row.eventId === arrival.body.event.id)).toBe(true);
+    expect(current.incidents.find(row => row.id === issue.id)?.status).toBe('resolved');
+    expect(current).not.toHaveProperty('students');
+    expect(current).not.toHaveProperty('inquiries');
+    expect(current).not.toHaveProperty('audit');
+    expect(current.events.every(row => !('resultPayload' in row) && !('requestHash' in row))).toBe(true);
+
+    const instructor = await staff('instructor');
+    expect((await request<LiveAttendance>('/attendance/live', { cookie: instructor.cookie })).body.corrections).toEqual([]);
+    const foreignCenter = randomUUID();
+    await db.query('INSERT INTO centers(id,name,timezone) VALUES($1,$2,$3)', [foreignCenter, 'Live refresh scope', 'Pacific/Auckland']);
+    const foreign = await staff('manager', foreignCenter);
+    const isolated = (await request<LiveAttendance>('/attendance/live', { cookie: foreign.cookie })).body;
+    expect(isolated.centerId).toBe(foreignCenter);
+    expect(isolated.visits).toEqual([]);
+    expect(isolated.events).toEqual([]);
+    expect(isolated.incidents).toEqual([]);
+    expect(isolated.corrections).toEqual([]);
+  });
+
+  it('marks an oversized attendance slice incomplete rather than presenting a partial roster as complete', async () => {
+    const child = await student();
+    await db.query(`INSERT INTO visits(id,center_id,student_id,checked_in_at,checked_out_at,status)
+      SELECT $1 || n::text,$2,$3,NOW()-INTERVAL '1 minute',NOW(),'closed' FROM generate_series(1,1001) AS n`, [randomUUID(), centerId, child.id]);
+    try {
+      const live = await request<LiveAttendance>('/attendance/live');
+      expect(live.status).toBe(200);
+      expect(live.body.complete).toBe(false);
+      expect(live.body.visits).toHaveLength(1001);
+    } finally { await db.query('DELETE FROM visits WHERE student_id=$1', [child.id]); }
   });
 });
 

@@ -8,9 +8,19 @@ The application provides a staff workspace for student and guardian records, inq
 
 The server enforces named staff sessions, roles, and center scope. Sessions expire after 15 minutes of inactivity; background roster polling does not reset that timer. Attendance uses explicit commands and stable event IDs. Accepted arrivals open a visit; authorized departures close it. Exceptional departures preserve what staff observed and open an incident. Corrections retain original attendance events and attribute changes to staff. Manager exports include original and effective event times, correction attribution, and center time zone.
 
-This is partial coverage of FR01, FR03 through FR08, FR10 through FR16, FR23 through FR25, and FR32. The summary below identifies the remaining controls. It should not be read as acceptance of every behavior within those requirements.
+This is partial coverage of FR01, FR03 through FR16, FR23 through FR25, and FR32. The summary below identifies the remaining controls. It should not be read as acceptance of every behavior within those requirements.
+
+## Generic roster import
+
+The main Railway control center includes a generic CSV importer, deployed and verified on September 14, 2026. Owners and managers can open **Import roster**, upload a UTF-8 CSV, match columns, review proposed changes, and confirm the import. Files support up to 500 data rows, 40 columns, and 512 KiB. Student reference, first name, and last name are required. One consistent row per student reference and an optional guardian contact are supported; conflicting repeated references are rejected, and same-name matches require a separate-student decision rather than merging by name.
+
+Updates preserve omitted grade, subjects, pickup restrictions, and existing guardian records. Explicitly mapped blank grade, subjects, or pickup restrictions clear those values, with subject changes reflected in enrollment records. Imported new guardian contacts start with `can_pickup=false`; importing contact details does not authorize pickup. Conflicting details for an existing guardian require separate review in the student record.
+
+The server enforces role and center scope, rechecks changed records and name collisions before committing, and saves rows in transactional batches of ten. Durable receipts support checking an uncertain response and resuming remaining rows without applying confirmed rows twice. Previews expire after one hour. Expired or stale previews must be revalidated before continuing. Kumon export-specific column mapping, shared-family identity mapping, and historical data migration still depend on the actual export format and field definitions. Railway deployment `ecace225-ccd5-4536-9192-9a3a8f693be2` succeeded. A live authenticated browser check verified the sidebar entry, Students & families shortcut, file and template controls, and empty import history. The student directory remains empty; no live import was submitted.
 
 ## Remaining work before operational use
+
+The [baseline completion plan](baseline-completion-plan.md) sequences the remaining work against the eight supplied checklist items and separates software acceptance from center operating evidence. The broader CRM gaps below remain separate from that baseline scope. The completion plan is planned work, not a record of implemented controls.
 
 | Area | Remaining work | References |
 | --- | --- | --- |
@@ -18,7 +28,7 @@ This is partial coverage of FR01, FR03 through FR08, FR10 through FR16, FR23 thr
 | Center opening | Designated contingency device, opening readiness, handover controls | FR02 |
 | Family records | Shared household relationships, duplicate review and merge, pickup authority verification and change history, independent-departure policy | FR03, FR05, FR06, FR08 |
 | Scheduling | Dated exceptions, appointments, center capacity and complete rescheduling rules. Recurring slot creation checks student overlaps; slots can be canceled. | FR07 |
-| Import and identity | CSV preview and validated import batches, duplicate handling, opaque revocable QR tokens | FR09, FR10 |
+| Import and identity | Kumon export-specific mapping, shared-family identity reconciliation, historical migration, and opaque revocable QR tokens. Generic CSV preview, duplicate review, and resumable import batches are implemented and tested. | FR09, FR10 |
 | Attendance workflow | Device identity, full occurrence-time provenance, historical corrections and unresolved-presence reconciliation | FR11 through FR16 |
 | Outages | Designated-device protected roster, durable local queue, offline grants, restart recovery, clock checks, conflict review and physical roster verification | FR17, FR18 |
 | Retention and privacy | Two-year retention enforcement, linked-record protection, policy holds, privacy request workflow, controlled disposition | FR19, FR31 |
@@ -33,6 +43,8 @@ This is partial coverage of FR01, FR03 through FR08, FR10 through FR16, FR23 thr
 Outbound messaging, a guardian portal, payment linkage, and instructor progress summaries belong to a later release. Multi-center operations and corporate integration need an approved interface and a separate design review. These features are not part of this build.
 
 ## Verification
+
+The latest importer validation passed `npm test` and `npm run build`, including 12 tests in [import.test.ts](../tests/import.test.ts). They cover repeatable additive schema initialization, simultaneous commit retries, omitted-field preservation, explicit clearing and enrollments, duplicate decisions, same-name collisions after preview, stale partial-batch recovery, guardian safeguards, role/center isolation, invalid UTF-8 and file limits, and expired previews. These tests use isolated PGlite data. Live PostgreSQL health, the authenticated import screen, and anonymous API rejection were separately verified after deployment. These checks do not establish production restore readiness. The earlier baseline evidence below remains a dated record.
 
 On September 14, 2026, `npm test` passed 27 tests across four files. The suite covers authentication and session scope, background polling, role restrictions, attendance retries and concurrency, pickup permissions, exceptional and unmatched departures, correction provenance, inquiry conversion, and report export authorization. It also verifies that the optional fictional demo initializes without duplicating data on restart, and that a new nested local database directory starts successfully and preserves committed data after reopening. Empty-workspace tests cover the default without sample records, preservation of staff and sessions during an authorized demo reset, isolation from other centers, refusal to reset a non-demo center, and a restart that remains empty. Tests use ephemeral PGlite databases without external services or real student data.
 
@@ -50,6 +62,6 @@ Project [Kumon CRM](https://railway.com/project/83fb1c4c-5246-4250-8e00-a4fc4053
 
 At the user's request, the hosted and default local workspaces were cleared of sample business records on September 14, 2026. The hosted reset removed 24 synthetic students, 8 inquiries, 64 recurring schedules, and their related attendance, contacts, tasks, interactions, and sample audit entries. The existing owner account and login sessions were retained, along with one administrative audit entry documenting the reset. Previously invented location and operating hours are now unconfigured. Demo seeding is disabled in both environments and is opt-in in the code and environment template.
 
-The login screen contains no fictional student activity. A new empty Overview directs staff to the existing student directory and center settings. The full proposed setup flow is documented in [Kumon center onboarding](onboarding-proposal.md); the wizard, import flow, invitations, and remaining operational controls still need implementation.
+The login screen contains no fictional student activity. A new empty Overview directs staff to the existing student directory and center settings. The full proposed setup flow is documented in [Kumon center onboarding](onboarding-proposal.md); the wizard, invitations, Kumon export-specific mapping, and remaining operational controls still need implementation.
 
 After clearing the workspaces, 13 read-only browser checks passed in each environment. They confirmed empty business collections and demo mode off before and after the checks, owner login/logout, all six pages, the new setup prompts, no fictional login activity, and mobile layout without page overflow. No business records were created and no browser runtime errors occurred. Evidence is under `tmp/empty-workspace`.

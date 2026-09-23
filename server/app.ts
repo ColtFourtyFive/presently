@@ -1,4 +1,6 @@
 import express, { type NextFunction, type Request, type Response } from 'express';
+import { createImportRouter } from './import.js';
+import { liveAttendance } from './live-attendance.js';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import { rateLimit } from 'express-rate-limit';
@@ -75,6 +77,11 @@ export function createApp(options: { db: Database; secureCookies?: boolean }) {
   app.use(helmet({ contentSecurityPolicy: process.env.NODE_ENV==='production' ? {
     directives: { defaultSrc:["'self'"],scriptSrc:["'self'"],styleSrc:["'self'","'unsafe-inline'"],imgSrc:["'self'",'data:'],connectSrc:["'self'"],fontSrc:["'self'"],objectSrc:["'none'"],frameAncestors:["'none'"] },
   } : false, crossOriginEmbedderPolicy:false }));
+  // JSON escaping can expand the bounded 512 KiB CSV by up to six times.
+  app.use('/api/imports/preview',express.json({limit:'4mb',verify(_req,_res,buffer){
+    try { new TextDecoder('utf-8',{fatal:true}).decode(buffer); }
+    catch { throw new ApiError(400,'Import requests must use valid UTF-8.'); }
+  }}));
   app.use(express.json({limit:'64kb'}));
   app.use(cookieParser());
   app.use('/api',(_req,res,next)=>{res.set('Cache-Control','no-store');next();});
@@ -127,6 +134,7 @@ export function createApp(options: { db: Database; secureCookies?: boolean }) {
     next();
   });
   app.get('/api/auth/session',(req,res)=>{const {centerId,...user}=actorOf(req);res.json({user});});
+  app.use('/api/imports',createImportRouter(db));
   app.post('/api/auth/logout',async(req,res)=>{await db.query('DELETE FROM sessions WHERE token_hash=$1',[tokenHash(req.cookies[SESSION_COOKIE])]);res.clearCookie(SESSION_COOKIE,{path:'/',secure:secureCookies,httpOnly:true,sameSite:'strict'});res.json({ok:true});});
   app.get('/api/bootstrap',async(req,res)=>{
     const actor=actorOf(req), instructor=actor.role==='instructor';
@@ -149,6 +157,14 @@ export function createApp(options: { db: Database; secureCookies?: boolean }) {
         corrections:managers.includes(actor.role)?await rows('attendance_corrections','created_at DESC'):[],
         serverTime:new Date().toISOString(),demo:center.demo};
     });
+    res.json(result);
+  });
+  app.get('/api/attendance/live',async(req,res)=>{
+    const result=await db.transaction(async tx=>{
+      await tx.query('SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY');
+      return liveAttendance(tx,actorOf(req));
+    });
+    if(!result)fail(404,'Center not found.');
     res.json(result);
   });
   app.post('/api/students',allow(...operators),async(req,res)=>{

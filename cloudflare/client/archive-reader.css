@@ -1,0 +1,15 @@
+.cf-archive-reader { display: grid; gap: 18px; }
+.cf-archive-filters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; align-items: end; }
+.cf-archive-filters .field { margin: 0; }
+.cf-archive-record { border: 1px solid var(--border, #dce4ed); border-radius: 12px; padding: 16px; }
+.cf-archive-record summary { cursor: pointer; padding: 10px 0; }
+.cf-archive-record dl { display: grid; gap: 10px; margin: 4px 0 12px; }
+.cf-archive-record dl > div { display: grid; grid-template-columns: minmax(130px,1fr) minmax(0,2fr); gap: 14px; }
+.cf-archive-record dt { color: var(--muted, #596778); font-size: 13px; }
+.cf-archive-record dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; }
+.cf-archive-pagination { flex-wrap: wrap; }
+.cf-archive-catalog { display: grid; gap: 10px; }
+.cf-archive-copy { display: grid; gap: 7px; text-align: left; padding: 16px; border: 1px solid var(--border, #dce4ed); border-radius: 10px; background: white; cursor: pointer; color: inherit; }
+.cf-archive-copy span { font-size: 13px; }
+.cf-archive-copy:hover { border-color: #1b80b7; }
+@media (max-width: 640px) { .cf-archive-filters { grid-template-columns: 1fr; } .cf-archive-record dl > div { grid-template-columns: 1fr; gap: 3px; } }
