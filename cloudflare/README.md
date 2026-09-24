@@ -1,47 +1,45 @@
-# Kumon CRM Cloudflare feasibility build
+# Presently
 
-This package is an isolated, single-center Cloudflare edition of the CRM. It uses React, Hono Workers, D1, Cloudflare Access, and enrolled front-desk kiosks. The Railway application is separate.
+Student check-in and check-out for Kumon centers. Presently is sold once and installed into the franchise business's own Cloudflare account, with one installation per business and any number of locations under one owner. It runs on Cloudflare Workers, D1, R2 and Queues, with a React client.
 
-New installations start with an empty student roster. Copy `wrangler.example.jsonc` to the ignored `wrangler.jsonc` and set customer-owned resource and Access identifiers before using Wrangler.
+Presently is an independent product. It is not affiliated with, endorsed by, or sponsored by Kumon North America, Inc. or Kumon Institute of Education Co., Ltd.
 
-This is not ready for live center operations. Live R2 backup/restoration, deployed resource measurements, physical iPad validation, the outage procedure, and integrated CRM acceptance remain release gates. See [live validation](docs/live-validation.md), [feasibility measurements](docs/feasibility-evidence.md), and the [readiness report](docs/readiness-report.md).
+## What it does
 
-## Local preview
+| Screen | Who | Purpose |
+| --- | --- | --- |
+| Kiosk (`/kiosk`) | Front-desk staff with a PIN | Shared iPad: find a student, check in, check out with a verified guardian, record an exceptional departure. Locks after 5 minutes. Never shows guardian contact details. |
+| Who’s here now | All staff | Live roster for the selected location, student search, departures needing review |
+| Roster | All staff; owners and managers edit | Students, guardians and pickup authority, visit history, manager corrections |
+| CSV import | Owners, managers | Template, column mapping, preview, duplicate review, receipt |
+| History | Owners, managers | Visits by date and student, correction trail, CSV export, daily summary, audit log |
+| Evidence report | Owners, managers | The eight baseline requirements: software facts plus the center's own attestations, printable to PDF |
+| Settings | Owner | Business, locations, staff and location assignments, kiosk enrollment, backups |
+
+Roles: **owner** (all locations), **manager**, **front desk**, **instructor** (live roster and names only). Owners reach every location; everyone else reaches only the locations they are assigned to. Kiosks are bound to the location they were enrolled at.
+
+## Design
+
+- **Database.** One D1 database per installation, created by one migration (`migrations/0001_initial.sql`) that applies with the standard `wrangler d1 migrations apply`. Attendance observations, corrections, audit entries and attestations are append-only, enforced by 18 triggers. A visit costs about 374 bytes, so a typical location adds about 7.5 MB a year.
+- **Correctness.** Each check-in carries a client-generated request ID. A retry after a lost reply returns the original result instead of recording twice. The screen never shows "saved" until the server confirms it.
+- **Sign-in.** The back office uses Cloudflare Access. The kiosk uses device enrollment plus per-staff PINs, hashed with an HMAC keyed by a Worker secret and protected by lockouts.
+- **Backups.** Nightly encrypted D1 exports to the customer's private R2 bucket, at the business's local backup hour. The owner holds the recovery key. See [docs/operations.md](docs/operations.md).
+- **Packaging.** Customer deployments are minified with no source maps.
+
+## Develop
 
 Use Node.js 22.13 or later.
 
 ```sh
 npm ci
-npm run check
-npm test
-npm run preview:local
+npm run check          # TypeScript
+npm test               # workerd + D1 tests, about 15 seconds
+npm run preview:local  # http://127.0.0.1:8791 (back office) and /kiosk, temporary empty database
+npm run measure        # projected daily D1 usage for one location against Free plan limits
 ```
 
-Open http://127.0.0.1:8791/admin. This localhost-only preview uses a signed synthetic identity and a temporary empty D1 database. It does not perform a real Cloudflare login. Any records entered there are disposable test records. Stop the preview to remove its temporary database. Use `CLOUDFLARE_LOCAL_PORT` to select a different port.
+## Install and operate
 
-## Installation and recovery
-
-New installations use private Cloudflare R2 storage for encrypted backups. D1 remains the live database; R2 does not require Google OAuth. See [R2 setup and recovery](docs/r2-backups.md). The private test bucket is provisioned with public access disabled. The recovery-key secret is uploaded. Pending application migrations/deployment, export credentials, independent key custody, alert delivery, and live recovery validation remain.
-
-The included `wrangler.jsonc` identifies the existing feasibility installation. Do not use it to deploy a customer installation. Generate a separate customer configuration with the [installation runbook](docs/installation-runbook.md).
-
-```sh
-npm run installation -- configure --input installation.local.json --out wrangler.customer.json
-npm run installation -- doctor --config wrangler.customer.json
-```
-
-The installer validates configuration, prepares guarded updates, and applies migrations through D1's native SQL file import. Cloudflare's standard remote migration command failed on this release's SQL triggers during the live test. Follow the runbook rather than substituting a different migration command.
-
-The recovery CLI can generate a private key file and verify/decrypt a downloaded encrypted backup. Keep the key outside the source tree and separate from backup storage. Follow [account setup and handover](docs/account-setup-handover.md) before restoring or reopening a database. Restoring SQL alone does not reconcile later access revocations or records created after the snapshot.
-
-Generate the installation's key once, then place that same value into the Worker's `BACKUP_KEY` secret through a secure channel. Do not generate a replacement key when recovering an existing backup.
-
-```sh
-npm run recovery -- generate-key /private/customer/recovery.key
-npm run backup-copy -- copy --config /private/customer/wrangler.customer.json --backup-id BACKUP_ID --key-file /private/customer/recovery.key --out /private/customer/downloaded-backup
-KUMON_RECOVERY_KEY_FILE=/private/customer/recovery.key npm run recovery -- verify-decrypt /private/customer/downloaded-backup /private/customer/new-restore.sql
-```
-
-The read-only copy command obtains `manifest.kcrm`, every referenced encrypted SQL part, and every pinned recursive archive object from private R2. It verifies the complete encrypted dependency graph before publishing the destination. Decryption refuses to overwrite existing files and publishes SQL only after verification. Restore the SQL into a new isolated database. Run `scripts/recovery-access-reset.sql` there, reapply the current staff allowlist and revocations, reconcile the interval after the snapshot, and verify records before reopening access. Record the recovery duration and any missing interval. Successful decryption alone is not a completed restore drill.
-
-Source code, migrations, UI components, and styles needed by this edition are contained in this directory. Customer accounts, credentials, backup keys, and business records do not belong in a distributable release.
+- [Installation](docs/installation.md): customer account, Access, installer, acceptance checklist.
+- [Operations](docs/operations.md): backups, restore, outage procedure, updates, retention.
+- [Deployed proof](docs/deployed-proof.md): the release gate on a real free-tier account and a physical iPad.

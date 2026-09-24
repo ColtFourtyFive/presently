@@ -215,11 +215,14 @@ importRouter.post('/preview', async c => {
   const created = await db.prepare("INSERT INTO imports (location_id, status, source_name, source_hash, total_rows, created_by, created_at, expires_at) VALUES (?, 'preview', ?, ?, ?, ?, ?, ?) RETURNING id")
     .bind(c.var.locationId, sourceName, sourceHash, rows.length, c.var.actor.id, timestamp, new Date(Date.now() + PREVIEW_HOURS * 3600000).toISOString()).first<Row>();
   const importId = Number(created!.id);
+  const nothingToApply = rows.every(row => row.status === 'rejected');
   // One statement for every row keeps the preview within D1's per-request query limit.
   await db.prepare(`INSERT INTO import_rows (import_id, row_number, action, status, student_code, student_name, problem, payload)
     SELECT ?, json_extract(value, '$.row'), json_extract(value, '$.action'), json_extract(value, '$.status'),
       json_extract(value, '$.studentCode'), json_extract(value, '$.studentName'), json_extract(value, '$.problem'), json_extract(value, '$.payload')
     FROM json_each(?)`).bind(importId, JSON.stringify(rows)).run();
+  // A file where every row was rejected has nothing to commit; close it now.
+  if (nothingToApply) await db.prepare("UPDATE imports SET status = 'completed', completed_at = ? WHERE id = ?").bind(now(), importId).run();
   await audit(c, 'import_previewed', 'import', importId, { sourceName, rows: rows.length }, c.var.locationId).run();
   return c.json(await summary(c.env, importId, c.var.locationId), 201);
 });

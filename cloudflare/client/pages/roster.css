@@ -1,0 +1,33 @@
+/* Roster, student profile, and CSV import. Builds on the shared tokens in styles.css. */
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary-strong);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.link-button:hover { text-decoration: underline; }
+.badge-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.cell-sub { display: block; color: var(--muted); font-size: 0.875rem; }
+
+.guardian-list { display: grid; gap: 12px; }
+.guardian-item { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); }
+.guardian-item-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.form-panel { display: grid; gap: 16px; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius); background: #f8fafb; }
+.form-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+.corrections-row td { background: #f8fafb; padding-top: 6px; }
+.correction-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 0.9rem; }
+
+.steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.progress { height: 10px; border-radius: 999px; background: #e9eef1; overflow: hidden; }
+.progress > span { display: block; height: 100%; background: var(--primary); transition: width 0.2s ease; }
+.mapping-grid { display: grid; gap: 12px 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.table-scroll { max-height: 520px; overflow: auto; }
+.table-scroll th { position: sticky; top: 0; background: var(--surface); }
+td select { min-width: 120px; }

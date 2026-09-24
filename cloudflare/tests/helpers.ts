@@ -31,7 +31,7 @@ export async function startApp(extra: Partial<RuntimeOptions> = {}) {
 }
 export type App = Awaited<ReturnType<typeof startApp>>;
 
-export async function json<T = Record<string, unknown>>(response: Response, status = 200): Promise<T> {
+export async function json<T = Record<string, unknown>>(response: { status: number; text(): Promise<string> }, status = 200): Promise<T> {
   const text = await response.text();
   expect(response.status, text).toBe(status);
   return JSON.parse(text) as T;

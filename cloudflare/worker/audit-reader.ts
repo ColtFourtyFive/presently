@@ -25,17 +25,18 @@ auditReaderRouter.get('/audit', async c => {
       FROM audit_entries a
       WHERE (a.location_id = ?1 OR (a.location_id IS NULL AND ?4 = 1)) AND a.created_at >= ${toIso('?2')} AND a.created_at < ${toIso('?3')}
       UNION ALL
-      SELECT 'event:' || e.id, st.display_name, e.action, 'student', CAST(e.student_id AS TEXT), ${toIso('e.received_at')},
-        json_object('observedAt', ${toIso('e.observed_at')}, 'channel', iif(e.device_id IS NULL, 'admin', 'kiosk'), 'reason', e.reason, 'guardianId', e.guardian_id),
+      SELECT 'event:' || e.id, st.display_name, e.action, 'student', s.first_name || ' ' || s.last_name || ' (' || s.student_code || ')', ${toIso('e.received_at')},
+        json_object('observedAt', ${toIso('e.observed_at')}, 'channel', iif(e.device_id IS NULL, 'admin', 'kiosk'), 'reason', e.reason, 'pickupGuardian', g.display_name),
         'attendance'
-      FROM attendance_events e JOIN staff st ON st.id = e.actor_id
+      FROM attendance_events e JOIN staff st ON st.id = e.actor_id JOIN students s ON s.id = e.student_id LEFT JOIN guardians g ON g.id = e.guardian_id
       WHERE e.location_id = ?1 AND e.observed_at >= ?2 AND e.observed_at < ?3
       UNION ALL
-      SELECT 'correction:' || ac.id, st.display_name, 'attendance_correction', 'visit', CAST(ac.visit_id AS TEXT), ${toIso('ac.recorded_at')},
+      SELECT 'correction:' || ac.id, st.display_name, 'attendance_correction', 'visit',
+        s.first_name || ' ' || s.last_name || ' (' || s.student_code || '), visit ' || ac.visit_id, ${toIso('ac.recorded_at')},
         json_object('reason', ac.reason, 'priorCheckInAt', ${toIso('ac.prior_check_in_at')}, 'priorCheckOutAt', ${toIso('ac.prior_check_out_at')},
           'checkInAt', ${toIso('ac.check_in_at')}, 'checkOutAt', ${toIso('ac.check_out_at')}),
         'correction'
-      FROM attendance_corrections ac JOIN visits v ON v.id = ac.visit_id JOIN staff st ON st.id = ac.actor_id
+      FROM attendance_corrections ac JOIN visits v ON v.id = ac.visit_id JOIN students s ON s.id = v.student_id JOIN staff st ON st.id = ac.actor_id
       WHERE v.location_id = ?1 AND ac.recorded_at >= ?2 AND ac.recorded_at < ?3
     ) ORDER BY recorded_at DESC, key DESC LIMIT ?5 OFFSET ?6`)
     .bind(c.var.locationId, range.fromMs, range.toMs, includeBusiness, PAGE + 1, cursor).all<Row>();

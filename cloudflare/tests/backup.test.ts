@@ -24,13 +24,13 @@ describe('encrypted R2 backups', () => {
             return { success: true, result: { at_bookmark: 'bookmark-1', status: 'complete', result: { signed_url: 'https://export.example.test/dump.sql' } } };
           }).persist();
         mock.get('https://export.example.test').intercept({ path: '/dump.sql', method: 'GET' })
-          .reply((options: { headers?: Record<string, string> | string[] }) => {
+          .reply(((options: { headers?: unknown }) => {
             const headers = options.headers as Record<string, string>;
             const range = (headers.Range ?? headers.range ?? '').match(/bytes=(\d+)-(\d+)/)!;
             const start = Number(range[1]);
             const end = Math.min(Number(range[2]), DUMP.length - 1);
             return { statusCode: 206, data: Buffer.from(DUMP.slice(start, end + 1)), responseOptions: { headers: { 'content-range': `bytes ${start}-${end}/${DUMP.length}` } } };
-          }).persist();
+          }) as never).persist();
       },
     });
   });

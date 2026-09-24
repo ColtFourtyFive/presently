@@ -55,6 +55,6 @@ describe('reports, evidence and audit', () => {
     expect(sources.has('admin')).toBe(true);
     expect(sources.has('attendance')).toBe(true);
     expect(page.items.some(i => i.action === 'student_created')).toBe(true);
-    expect(page.items.some(i => i.action === 'evidence_report_generated')).toBe(true);
+    expect(page.items.find(i => i.source === 'attendance')!.entityId).toMatch(/Synthetic Student \(R-\d\)/);
   });
 });

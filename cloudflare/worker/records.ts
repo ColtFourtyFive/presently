@@ -137,15 +137,16 @@ export function createRecordsRouter() {
       ? `, (SELECT json_object('displayName', g.display_name, 'phone', g.phone, 'email', g.email) FROM student_guardians sg
            JOIN guardians g ON g.id = sg.guardian_id WHERE sg.student_id = s.id ORDER BY sg.pickup_authority = 'allowed' DESC, g.display_name, g.id LIMIT 1) AS contact`
       : '';
-    const [rows, count] = await c.env.CRM_DB.batch<Row>([
-      c.env.CRM_DB.prepare(`SELECT s.*, EXISTS (SELECT 1 FROM visits v WHERE v.student_id = s.id AND v.check_out_at IS NULL) AS present ${contactSelect}
-        FROM students s WHERE ${where} ORDER BY s.last_name, s.first_name, s.id LIMIT ?6 OFFSET ?7`).bind(...args, pageSize, offset),
-      c.env.CRM_DB.prepare(`SELECT count(*) AS n FROM students s WHERE ${where}`).bind(...args),
-    ]);
+    // One pass: the window count reports the total match count alongside the requested page.
+    const rows = await c.env.CRM_DB.prepare(`SELECT s.*, count(*) OVER () AS total_count,
+        EXISTS (SELECT 1 FROM visits v WHERE v.student_id = s.id AND v.check_out_at IS NULL) AS present ${contactSelect}
+      FROM students s WHERE ${where} ORDER BY s.last_name, s.first_name, s.id LIMIT ?6 OFFSET ?7`).bind(...args, pageSize, offset).all<Row>();
     const items: StudentListItem[] = rows.results.map(row => ({
       ...studentView(row), present: !!row.present, contact: typeof row.contact === 'string' ? JSON.parse(row.contact) : null,
     }));
-    return c.json({ items, total: Number(count.results[0].n), page, pageSize });
+    const total = rows.results.length ? Number(rows.results[0].total_count)
+      : offset ? Number((await c.env.CRM_DB.prepare(`SELECT count(*) AS n FROM students s WHERE ${where}`).bind(...args).first<{ n: number }>())?.n ?? 0) : 0;
+    return c.json({ items, total, page, pageSize });
   });
 
   app.get('/students/:id', async c => {

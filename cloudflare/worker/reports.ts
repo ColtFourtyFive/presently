@@ -6,7 +6,7 @@ import { getBusiness, getLocation } from './admin';
 import { historyRange } from './attendance';
 import { correctionView, visitSelect, visitView } from './records';
 import {
-  ApiProblem, addDays, audit, body, localMidnight, localParts, managementRoles, now, requireAdmin, requireRole,
+  ApiProblem, addDays, audit, body, idValue, localMidnight, localParts, managementRoles, now, requireAdmin, requireRole,
   textValue, type Ctx, type Row,
 } from './util';
 
@@ -31,10 +31,12 @@ reportsRouter.get('/reports/attendance', async c => {
   const page = Number(c.req.query('page') || 1);
   if (!Number.isInteger(page) || page < 1 || page > 1000) throw new ApiProblem(400, 'INVALID_PAGE', 'Choose a positive export page.');
   const db = c.env.CRM_DB;
-  const where = 'v.location_id = ? AND v.check_in_at >= ? AND v.check_in_at < ?';
+  const studentId = c.req.query('studentId') ? idValue(c.req.query('studentId'), 'studentId') : null;
+  const where = 'v.location_id = ?1 AND v.check_in_at >= ?2 AND v.check_in_at < ?3 AND (?4 IS NULL OR v.student_id = ?4)';
+  const args = [c.var.locationId, range.fromMs, range.toMs, studentId];
   const [rows, count] = await db.batch<Row>([
-    db.prepare(`${visitSelect} WHERE ${where} ORDER BY v.check_in_at, v.id LIMIT ? OFFSET ?`).bind(c.var.locationId, range.fromMs, range.toMs, EXPORT_PAGE, (page - 1) * EXPORT_PAGE),
-    db.prepare(`SELECT count(*) AS n FROM visits v WHERE ${where}`).bind(c.var.locationId, range.fromMs, range.toMs),
+    db.prepare(`${visitSelect} WHERE ${where} ORDER BY v.check_in_at, v.id LIMIT ?5 OFFSET ?6`).bind(...args, EXPORT_PAGE, (page - 1) * EXPORT_PAGE),
+    db.prepare(`SELECT count(*) AS n FROM visits v WHERE ${where}`).bind(...args),
   ]);
   const ids = rows.results.map(row => Number(row.id));
   const corrections = ids.length
@@ -42,7 +44,7 @@ reportsRouter.get('/reports/attendance', async c => {
       .bind(JSON.stringify(ids)).all<Row>()
     : { results: [] as Row[] };
   const total = Number(count.results[0].n);
-  if (page === 1) await audit(c, 'attendance_exported', 'report', `${range.from}..${range.to}`, { from: range.from, to: range.to, visits: total }, c.var.locationId).run();
+  if (page === 1) await audit(c, 'attendance_exported', 'report', `${range.from}..${range.to}`, { from: range.from, to: range.to, studentId, visits: total }, c.var.locationId).run();
   return c.json({
     range: { from: range.from, to: range.to, timezone: range.timezone }, page, pageSize: EXPORT_PAGE, total,
     visits: rows.results.map(visitView), corrections: corrections.results.map(correctionView), exportedAt: now(), exportedBy: c.var.actor.displayName,
@@ -214,9 +216,7 @@ reportsRouter.get('/evidence', async c => {
   requireAdmin(c); requireRole(c, managementRoles);
   const year = Number(c.req.query('year') || new Date().getUTCFullYear());
   if (!Number.isInteger(year) || year < 2020 || year > 2100) throw new ApiProblem(400, 'INVALID_YEAR', 'Choose a valid year.');
-  const report = await evidenceReport(c, year);
-  await audit(c, 'evidence_report_generated', 'report', `evidence:${year}`, { year }, c.var.locationId).run();
-  return c.json(report);
+  return c.json(await evidenceReport(c, year));
 });
 
 reportsRouter.post('/attestations', async c => {

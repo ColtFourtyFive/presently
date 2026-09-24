@@ -1,74 +1,44 @@
+// Example configuration for local development. Customer installations get a
+// generated configuration from `npm run install:business` (docs/installation.md),
+// stored outside this repository.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "kumon-center-crm",
+  "name": "presently-dev",
   "main": "worker/index.ts",
   "compatibility_date": "2026-06-11",
+  "minify": true,
+  "upload_source_maps": false,
   "workers_dev": true,
   "preview_urls": false,
   "assets": {
     "directory": "./dist/client",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": [
-      "/api/*"
-    ]
+    "run_worker_first": ["/api/*"]
   },
   "d1_databases": [
-    {
-      "binding": "CRM_DB",
-      "database_name": "YOUR_D1_DATABASE_NAME",
-      "database_id": "YOUR_D1_DATABASE_ID",
-      "migrations_dir": "migrations"
-    }
+    { "binding": "CRM_DB", "database_name": "presently-dev-db", "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "migrations" }
   ],
-  // R2 and the private bucket must be provisioned in the customer account.
-  // Apply pending migrations and configure backup secrets before deployment.
-  "r2_buckets": [
-    {
-      "binding": "BACKUP_BUCKET",
-      "bucket_name": "YOUR_PRIVATE_R2_BUCKET_AND_QUEUE"
-    }
-  ],
-  "vars": {
-    "APP_ENV": "production",
-    "BACKUP_PROVIDER": "r2", "BACKUP_ENABLED": "false", "ARCHIVE_ENABLED": "false", "ARCHIVE_V2_ENABLED": "false",
-    "CENTER_ID": "main-center",
-    "APP_VERSION": "0.1.0",
-    "ACCESS_ISSUER": "https://YOUR_TEAM.cloudflareaccess.com",
-    "BOOTSTRAP_OWNER_EMAIL": "OWNER_EMAIL@example.com",
-    "CF_ACCOUNT_ID": "YOUR_CLOUDFLARE_ACCOUNT_ID",
-    "CF_DATABASE_ID": "YOUR_D1_DATABASE_ID",
-    "ACCESS_AUD": "YOUR_ACCESS_AUDIENCE"
-  },
-  "triggers": {
-    "crons": [
-      "*/5 * * * *"
-    ]
-  },
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 0.1,
-    "traces": {
-      "enabled": true,
-      "head_sampling_rate": 0.1
-    }
-  },
-  "account_id": "YOUR_CLOUDFLARE_ACCOUNT_ID",
+  "r2_buckets": [{ "binding": "BACKUP_BUCKET", "bucket_name": "presently-dev-backups" }],
   "queues": {
-    "producers": [
-      {
-        "queue": "YOUR_PRIVATE_R2_BUCKET_AND_QUEUE",
-        "binding": "BACKUP_QUEUE"
-      }
-    ],
-    "consumers": [
-      {
-        "queue": "YOUR_PRIVATE_R2_BUCKET_AND_QUEUE",
-        "max_batch_size": 1,
-        "max_retries": 5,
-        "max_batch_timeout": 5,
-        "max_concurrency": 1
-      }
-    ]
-  }
+    "producers": [{ "binding": "BACKUP_QUEUE", "queue": "presently-dev-backups" }],
+    "consumers": [{ "queue": "presently-dev-backups", "max_batch_size": 1, "max_retries": 5, "max_concurrency": 1 }]
+  },
+  "vars": {
+    "APP_ENV": "local",
+    "APP_VERSION": "dev",
+    "ACCESS_ISSUER": "https://YOUR_TEAM.cloudflareaccess.com",
+    "ACCESS_AUD": "YOUR_ACCESS_APPLICATION_AUDIENCE",
+    "BOOTSTRAP_OWNER_EMAIL": "owner@example.com",
+    "BACKUP_ENABLED": "false",
+    "CF_ACCOUNT_ID": "YOUR_ACCOUNT_ID",
+    "CF_DATABASE_ID": "00000000-0000-0000-0000-000000000000"
+  },
+  // Secrets (set with `wrangler secret put`, or .dev.vars locally):
+  //   PIN_PEPPER          32+ random characters; keys every kiosk PIN hash
+  //   BACKUP_KEY          base64 32-byte recovery key; the owner keeps a copy
+  //   CF_D1_EXPORT_TOKEN  API token limited to "D1: Edit" on this account
+  //   BACKUP_ALERT_URL    optional HTTPS webhook for backup failure alerts
+  "triggers": { "crons": ["0 * * * *"] },
+  "observability": { "enabled": true, "head_sampling_rate": 1 }
 }

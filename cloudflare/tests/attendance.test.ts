@@ -3,7 +3,7 @@ import type { AttendanceResult, Correction, Review, RosterPollResponse, RosterRe
 import { createStudent, json, observation, startApp, type App } from './helpers';
 
 const allowed = (detail: StudentDetail) => detail.guardians.find(g => g.pickupAuthority === 'allowed')!.id;
-const code = async (response: Response, status: number) => (await json<{ error: { code: string } }>(response, status)).error.code;
+const code = async (response: { status: number; text(): Promise<string> }, status: number) => (await json<{ error: { code: string } }>(response, status)).error.code;
 
 describe('attendance', () => {
   let app: App;
