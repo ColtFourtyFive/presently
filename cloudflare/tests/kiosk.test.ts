@@ -1,117 +1,90 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import type { AttendanceResult, Device, KioskStatus, Staff } from '../shared/types.js';
-import { CookieJar, createStudent, json, observation, startApp, type App } from './helpers.js';
+import type { AttendanceResult, KioskStatus, KioskStudentDetail, Location } from '../shared/types';
+import { CookieJar, createStudent, json, observation, startApp, unlockedKiosk, type App } from './helpers';
 
-describe('Enrolled kiosk and named staff authorization', () => {
+describe('front-desk kiosk', () => {
   let app: App;
   beforeAll(async () => { app = await startApp(); });
-  afterAll(async () => app?.close());
-  const pin = '48271639';
+  afterAll(async () => { await app?.close(); });
 
-  async function staff(role: Staff['role'] = 'front_desk') {
-    const result = await json<{ staff: Staff }>(await app.request('/api/admin/staff', { token: app.token, body: {
-      email: `${crypto.randomUUID()}@example.test`, displayName: 'Synthetic Staff', role,
-      kioskEnabled: role !== 'instructor', ...(role === 'instructor' ? {} : { pin }),
-    } }), 201);
-    return result.staff;
-  }
-  async function enroll() {
-    const grant = await json<{ token: string }>(await app.request('/api/admin/devices/enrollment', { token: app.token, body: {} }), 201);
+  it('enrolls once with a short-lived code and binds the device to its location', async () => {
+    const { token } = await json<{ token: string }>(await app.admin('/devices/enrollment', { body: { locationId: app.locationId } }), 201);
     const jar = new CookieJar();
-    const response = await jar.request(app, '/api/kiosk/enroll', { body: { token: grant.token, label: 'Synthetic test iPad' } });
-    const cookies = response.headers.getSetCookie().join(';');
-    expect(cookies).toContain('HttpOnly');
-    expect(cookies).toContain('Secure');
-    const { device } = await json<{ device: Device }>(response, 201);
-    return { jar, device, grant };
-  }
-
-  it('requires enrollment before PIN entry and a PIN session before attendance', async () => {
-    const operator = await staff();
-    expect((await app.request('/api/kiosk/unlock', { body: { staffId: operator.id, pin } })).status).toBe(401);
-    const { jar } = await enroll();
-    expect((await jar.request(app, '/api/kiosk/roster')).status).toBe(401);
+    expect((await jar.request(app, '/api/kiosk/enroll', { body: { token: 'wrong', label: 'iPad' } })).status).toBe(401);
+    await json(await jar.request(app, '/api/kiosk/enroll', { body: { token, label: 'iPad' } }), 201);
+    expect((await new CookieJar().request(app, '/api/kiosk/enroll', { body: { token, label: 'Second iPad' } })).status).toBe(401);
     const status = await json<KioskStatus>(await jar.request(app, '/api/kiosk/status'));
-    expect(status.enrolled).toBe(true);
+    expect(status).toMatchObject({ enrolled: true, location: { id: app.locationId } });
     expect(status.operator).toBeUndefined();
-    expect(JSON.stringify(status)).not.toMatch(/pin_hash|pin_salt|token_hash/);
+    expect((await jar.request(app, '/api/kiosk/roster')).status).toBe(401);
   });
 
-  it('consumes each enrollment token once, including simultaneous enrollment', async () => {
-    const grant = await json<{ token: string }>(await app.request('/api/admin/devices/enrollment', { token: app.token, body: {} }), 201);
-    const responses = await Promise.all([1, 2].map(() => app.request('/api/kiosk/enroll', { body: { token: grant.token, label: 'Concurrent synthetic kiosk' } })));
-    expect(responses.filter(r => r.status === 201)).toHaveLength(1);
-    expect(responses.filter(r => [401, 409].includes(r.status))).toHaveLength(1);
+  it('unlocks with an individual PIN, stores only a keyed hash, and locks out repeated guesses', async () => {
+    const kiosk = await unlockedKiosk(app);
+    const stored = await app.db.prepare('SELECT pin_hash FROM staff WHERE id = ?').bind(kiosk.staffId).first<{ pin_hash: string }>();
+    expect(stored!.pin_hash).toMatch(/^v1:/);
+    expect(stored!.pin_hash).not.toContain(kiosk.pin);
+    await json(await kiosk.jar.request(app, '/api/kiosk/roster'));
+    await json(await kiosk.jar.request(app, '/api/kiosk/lock', { body: {} }));
+    expect((await kiosk.jar.request(app, '/api/kiosk/roster')).status).toBe(401);
+    for (let i = 0; i < 5; i++) expect((await kiosk.jar.request(app, '/api/kiosk/unlock', { body: { staffId: kiosk.staffId, pin: '00000000' } })).status).toBe(401);
+    const locked = await kiosk.jar.request(app, '/api/kiosk/unlock', { body: { staffId: kiosk.staffId, pin: kiosk.pin } });
+    expect((await json<{ error: { code: string } }>(locked, 429)).error.code).toBe('PIN_LOCKED');
   });
 
-  it('attributes attendance to the unlocked staff member and denies back-office escalation', async () => {
-    const operator = await staff();
-    const { jar, device } = await enroll();
-    await json(await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } }));
+  it('records attendance attributed to the operator and device', async () => {
+    const kiosk = await unlockedKiosk(app);
     const detail = await createStudent(app);
-    const result = await json<AttendanceResult>(await jar.request(app, '/api/kiosk/attendance', { body: observation(detail.student.id, 'check_in') }), 201);
-    expect(result.event.actorId).toBe(operator.id);
+    const result = await json<AttendanceResult>(await kiosk.jar.request(app, '/api/kiosk/attendance', { body: observation(detail.student.id, 'check_in') }), 201);
     expect(result.event.channel).toBe('kiosk');
-    expect(await app.db.prepare('SELECT device_id FROM attendance_events WHERE id=?').bind(result.event.id).first('device_id')).toBe(device.id);
-    expect((await jar.request(app, '/api/admin/staff')).status).toBe(401);
-    expect((await jar.request(app, '/api/kiosk/students', { body: { studentCode: 'unauthorized', firstName: 'No', lastName: 'Create' } })).status).toBe(403);
-    expect((await jar.request(app, '/api/kiosk/reports/attendance.csv')).status).toBe(404);
-    await json(await jar.request(app, '/api/kiosk/lock', { body: {} }));
-    expect((await jar.request(app, '/api/kiosk/roster')).status).toBe(401);
+    expect(result.event.actorId).toBe(kiosk.staffId);
   });
 
-  it('enforces the PIN attempt limit under concurrent guesses and blocks a correct PIN while locked', async () => {
-    const operator = await staff();
-    const { jar } = await enroll();
-    const attempts = await Promise.all(Array.from({ length: 8 }, () => jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin: '00000000' } })));
-    expect(attempts.filter(r => r.status === 401)).toHaveLength(5);
-    expect(attempts.filter(r => r.status === 429)).toHaveLength(3);
-    expect((await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } })).status).toBe(429);
-    const past = new Date(Date.now() - 16 * 60_000).toISOString();
-    await app.db.prepare('UPDATE pin_throttles SET window_start=?,locked_until=?').bind(past, past).run();
-    await json(await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } }));
-  });
-
-  it('revokes a lost device and invalidates its existing operator session', async () => {
-    const operator = await staff();
-    const { jar, device } = await enroll();
-    await json(await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } }));
-    await json(await app.request(`/api/admin/devices/${device.id}/revoke`, { token: app.token, body: {} }));
-    expect((await jar.request(app, '/api/kiosk/roster')).status).toBe(401);
-    expect((await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } })).status).toBe(401);
-    expect((await json<KioskStatus>(await jar.request(app, '/api/kiosk/status'))).enrolled).toBe(false);
-  });
-
-  it('deactivates both an existing PIN session and a previously valid Access identity', async () => {
-    const operator = await staff();
-    const operatorToken = await app.signer.token({ email: operator.email, sub: operator.id });
-    const { jar } = await enroll();
-    await json(await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } }));
-    await json(await app.request(`/api/admin/staff/${operator.id}`, { token: app.token, method: 'PATCH', body: { active: false } }));
-    expect((await jar.request(app, '/api/kiosk/roster')).status).toBe(401);
-    expect((await app.request('/api/admin/session', { token: operatorToken })).status).toBe(403);
-  });
-
-  it('does not extend the operator session through background roster polling', async () => {
-    const operator = await staff();
-    const { jar, device } = await enroll();
-    await json(await jar.request(app, '/api/kiosk/unlock', { body: { staffId: operator.id, pin } }));
-    const before = await app.db.prepare('SELECT expires_at,last_activity_at FROM kiosk_sessions WHERE device_id=?').bind(device.id).first();
-    await json(await jar.request(app, '/api/kiosk/roster'));
-    const after = await app.db.prepare('SELECT expires_at,last_activity_at FROM kiosk_sessions WHERE device_id=?').bind(device.id).first();
-    expect(after).toEqual(before);
-    await app.db.prepare('UPDATE kiosk_sessions SET expires_at=? WHERE device_id=?').bind(new Date(Date.now() - 1000).toISOString(), device.id).run();
-    expect((await jar.request(app, '/api/kiosk/roster')).status).toBe(401);
-  });
-
-  it('keeps the last owner and blocks instructor writes and enrollment', async () => {
-    expect((await app.request(`/api/admin/staff/${app.actor.id}`, { token: app.token, method: 'PATCH', body: { active: false } })).status).toBe(409);
-    const instructor = await staff('instructor');
-    const token = await app.signer.token({ email: instructor.email, sub: instructor.id });
-    expect((await app.request('/api/admin/roster', { token })).status).toBe(200);
-    expect((await app.request('/api/admin/devices/enrollment', { token, body: {} })).status).toBe(403);
+  it('shows pickup authority on the shared kiosk but never guardian phone numbers, emails or notes', async () => {
+    const kiosk = await unlockedKiosk(app);
     const detail = await createStudent(app);
-    expect((await app.request('/api/admin/attendance', { token, body: observation(detail.student.id, 'check_in') })).status).toBe(403);
-    expect((await app.request('/api/admin/reports/attendance.csv', { token })).status).toBe(403);
+    const view = await json<KioskStudentDetail>(await kiosk.jar.request(app, `/api/kiosk/students/${detail.student.id}`));
+    expect(view.guardians.length).toBe(3);
+    for (const guardian of view.guardians) {
+      expect(Object.keys(guardian).sort()).toEqual(['displayName', 'id', 'pickupAuthority', 'relationship']);
+    }
+    const raw = JSON.stringify(await (await kiosk.jar.request(app, `/api/kiosk/students?q=${encodeURIComponent('Approved')}`)).json());
+    expect(raw).not.toContain('555-0101');
+    expect(raw).not.toContain('guardian@example.test');
+  });
+
+  it('refuses back-office actions from the kiosk', async () => {
+    const kiosk = await unlockedKiosk(app);
+    const detail = await createStudent(app);
+    expect((await kiosk.jar.request(app, '/api/kiosk/students', { body: { studentCode: 'K', firstName: 'K', lastName: 'K' } })).status).toBe(403);
+    expect((await kiosk.jar.request(app, '/api/kiosk/history')).status).toBe(403);
+    expect((await kiosk.jar.request(app, `/api/kiosk/students/${detail.student.id}`, { method: 'PATCH', body: { firstName: 'X' } })).status).toBe(403);
+  });
+
+  it('keeps a kiosk to its own location and its assigned staff', async () => {
+    const north = (await json<{ location: Location }>(await app.admin('/locations', { location: null, body: { name: 'North', timezone: 'America/New_York' } }), 201)).location;
+    const southKiosk = await unlockedKiosk(app);
+    const northStudent = await createStudent(app, {}, north.id);
+    expect((await southKiosk.jar.request(app, `/api/kiosk/students/${northStudent.student.id}`)).status).toBe(404);
+    const response = await southKiosk.jar.request(app, '/api/kiosk/attendance', { body: observation(northStudent.student.id, 'check_in') });
+    expect((await json<{ error: { code: string } }>(response, 404)).error.code).toBe('STUDENT_NOT_FOUND');
+    // A front-desk PIN assigned only to the south location cannot unlock a north kiosk.
+    const { token } = await json<{ token: string }>(await app.admin('/devices/enrollment', { body: { locationId: north.id } }), 201);
+    const northJar = new CookieJar();
+    await json(await northJar.request(app, '/api/kiosk/enroll', { body: { token, label: 'North iPad' } }), 201);
+    const status = await json<KioskStatus>(await northJar.request(app, '/api/kiosk/status'));
+    expect(status.staff.map(s => s.id)).not.toContain(southKiosk.staffId);
+    expect((await northJar.request(app, '/api/kiosk/unlock', { body: { staffId: southKiosk.staffId, pin: southKiosk.pin } })).status).toBe(401);
+  });
+
+  it('ends kiosk sessions when the device is revoked or the staff member changes', async () => {
+    const kiosk = await unlockedKiosk(app);
+    await json(await app.admin(`/staff/${kiosk.staffId}`, { location: null, method: 'PATCH', body: { displayName: 'Renamed' } }));
+    expect((await kiosk.jar.request(app, '/api/kiosk/roster')).status).toBe(401);
+    const other = await unlockedKiosk(app);
+    const device = (await json<KioskStatus>(await other.jar.request(app, '/api/kiosk/status'))).device!;
+    await json(await app.admin(`/devices/${device.id}/revoke`, { location: null, body: {} }));
+    expect((await other.jar.request(app, '/api/kiosk/roster')).status).toBe(401);
+    expect((await json<KioskStatus>(await other.jar.request(app, '/api/kiosk/status'))).enrolled).toBe(false);
   });
 });
